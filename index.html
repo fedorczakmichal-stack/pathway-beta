@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="pl" data-lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f2f27">
+<title>Pathway — otwarta beta. Twój cel staje się drogą na prawdziwych ulicach.</title>
+<meta name="description" content="Pathway to żywa mapa, która zamienia jeden cel w drogę na prawdziwych ulicach Manhattanu. Otwarta beta — testuj w przeglądarce, bez konta, dane zostają u Ciebie.">
+<link rel="canonical" href="https://fedorczakmichal-stack.github.io/pathway-beta/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pathway — otwarta beta">
+<meta property="og:description" content="Twój cel staje się drogą na prawdziwych ulicach Manhattanu. Testuj betę w przeglądarce — bez konta.">
+<meta property="og:url" content="https://fedorczakmichal-stack.github.io/pathway-beta/">
+<meta property="og:image" content="https://fedorczakmichal-stack.github.io/pathway-beta/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fedorczakmichal-stack.github.io/pathway-beta/img/og.jpg">
+<link rel="icon" type="image/svg+xml" sizes="16x16" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20x%3D%22.75%22%20y%3D%22.75%22%20width%3D%2230.5%22%20height%3D%2230.5%22%20rx%3D%227%22%20fill%3D%22%23123a30%22%20stroke%3D%22rgba%28201%2C160%2C97%2C.42%29%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20transform%3D%22translate%289.854%2021.5%29%20scale%280.009500%20-0.009500%29%22%20fill%3D%22%23efe3d0%22%20d%3D%22M463%201352H696Q881%201352%20994.0%201302.0Q1107%201252%201158.5%201166.0Q1210%201080%201210%20971Q1210%20860%201157.5%20769.0Q1105%20678%20993.0%20624.0Q881%20570%20702%20570H463V105L623%2052V0H84V52L244%20105V1247L84%201300V1352ZM986%20961Q986%201050%20950.0%201111.5Q914%201173%20831.5%201204.5Q749%201236%20608%201236H463V686H697Q782%20686%20847.0%20717.0Q912%20748%20949.0%20809.0Q986%20870%20986%20961Z%22%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" type="image/svg+xml" sizes="32x32" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20x%3D%22.75%22%20y%3D%22.75%22%20width%3D%2230.5%22%20height%3D%2230.5%22%20rx%3D%227%22%20fill%3D%22%23123a30%22%20stroke%3D%22rgba%28201%2C160%2C97%2C.42%29%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20transform%3D%22translate%289.854%2021.5%29%20scale%280.009500%20-0.009500%29%22%20fill%3D%22%23efe3d0%22%20d%3D%22M463%201352H696Q881%201352%20994.0%201302.0Q1107%201252%201158.5%201166.0Q1210%201080%201210%20971Q1210%20860%201157.5%20769.0Q1105%20678%20993.0%20624.0Q881%20570%20702%20570H463V105L623%2052V0H84V52L244%20105V1247L84%201300V1352ZM986%20961Q986%201050%20950.0%201111.5Q914%201173%20831.5%201204.5Q749%201236%20608%201236H463V686H697Q782%20686%20847.0%20717.0Q912%20748%20949.0%20809.0Q986%20870%20986%20961Z%22%2F%3E%3Ccircle%20cx%3D%2213.20%22%20cy%3D%2226.5%22%20r%3D%221.7%22%20fill%3D%22%23d6b273%22%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#071d18; --tile:#123a30; --tile-top:#164134; --tile-bottom:#0f2f27;
+  --ink:#20372e; --cream:#efe3d0; --paper:#f2e9d8; --paper-soft:#ece1cc;
+  --brass:#c9a061; --brass-ink:#76531b; --gold:#d6b273;
+  --serif:"Newsreader",Georgia,serif; --sans:"Instrument Sans",system-ui,-apple-system,sans-serif;
+  --radius:18px; --maxw:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+[data-lang="pl"] .en{display:none!important}
+[data-lang="en"] .pl{display:none!important}
+
+/* ---------- typografia ---------- */
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em}
+h1{font-size:clamp(34px,5.6vw,58px)}
+h2{font-size:clamp(27px,3.6vw,40px)}
+h3{font-size:21px}
+.kicker{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-ink)}
+.dark .kicker{color:var(--gold)}
+.lead{font-size:clamp(16px,2vw,19px)}
+
+/* ---------- struktura ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+section{padding:76px 0}
+.dark{background:linear-gradient(180deg,var(--tile-top),var(--tile) 52%,var(--tile-bottom));color:var(--cream)}
+.dark ::selection{background:rgba(214,178,115,.35)}
+.grain{position:relative}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+
+/* ---------- wordmark ---------- */
+.wordmark{display:inline-flex;flex-direction:column;gap:6px;color:var(--cream);font-family:var(--serif);line-height:1;text-decoration:none}
+.wordmark strong{font-weight:500;font-size:21px;letter-spacing:-.01em}
+.wordmark svg{display:block;width:104px;height:8px}
+.wordmark--paper{color:var(--ink)}
+.wordmark--hero{gap:8px}
+.wordmark--hero strong{font-size:34px}
+.wordmark--hero svg{width:208px;height:13px}
+.road-travelled,.road-ahead{stroke:var(--brass)}
+.road-here{fill:var(--gold)}
+.road-ring{stroke:var(--gold);fill:none}
+.road-goal{stroke:var(--brass);fill:none}
+.wordmark--paper .road-travelled,.wordmark--paper .road-ahead,.wordmark--paper .road-goal{stroke:var(--brass-ink)}
+.wordmark--paper .road-here{fill:var(--brass-ink)}
+.wordmark--paper .road-ring{stroke:var(--brass-ink)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(15,47,39,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,160,97,.22)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
+nav.menu{display:flex;gap:22px;font-size:14px;font-weight:600}
+nav.menu a{color:var(--cream);opacity:.85;text-decoration:none}
+nav.menu a:hover{opacity:1;color:var(--gold)}
+.bar-right{display:flex;align-items:center;gap:12px}
+.lang{display:inline-flex;border:1px solid rgba(201,160,97,.45);border-radius:999px;overflow:hidden}
+.lang button{all:unset;cursor:pointer;padding:5px 11px;font-size:12px;font-weight:700;color:var(--cream);opacity:.65}
+.lang button[aria-pressed="true"]{background:var(--brass);color:var(--forest);opacity:1}
+.lang button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+@media (max-width:860px){nav.menu{display:none}}
+
+/* ---------- przyciski ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease;border:0;cursor:pointer}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold);color:var(--forest);box-shadow:0 6px 22px rgba(214,178,115,.35)}
+.btn-gold:hover{box-shadow:0 8px 28px rgba(214,178,115,.5)}
+.btn-ghost{border:1.5px solid rgba(201,160,97,.6);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ink{background:var(--tile);color:var(--cream)}
+.btn-ink:hover{background:var(--tile-top)}
+.btn-line{border:1.5px solid rgba(32,55,46,.35);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink)}
+.btn-sm{padding:9px 16px;font-size:14px}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* ---------- hero ---------- */
+.hero{padding:72px 0 92px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:44px}}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(214,178,115,.55);color:var(--gold);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.badge i{animation:none}}
+.hero h1{margin:20px 0 16px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero .lead{max-width:34em;opacity:.92}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.hero-note{margin-top:16px;font-size:13.5px;opacity:.6}
+.hero-road{margin-top:44px;max-width:420px}
+.hero-road svg{width:100%;height:16px;display:block}
+.hero-road .draw{stroke-dasharray:112;stroke-dashoffset:112;animation:draw 1.6s .3s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.hero-road .draw{animation:none;stroke-dashoffset:0}}
+
+/* ---------- telefon ---------- */
+.phone{position:relative;border-radius:52px;background:#0b1512;padding:11px;box-shadow:0 26px 70px rgba(4,14,11,.45),0 4px 16px rgba(4,14,11,.3);width:min(320px,78vw);margin:0 auto}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:88px;height:8px;border-radius:999px;background:#0b1512;z-index:2}
+.phone img{border-radius:42px;width:100%}
+.phone-caption{margin-top:16px;text-align:center;font-size:13.5px;opacity:.65}
+.hero-phone{position:relative}
+.hero-phone::after{content:"";position:absolute;inset:-40px -60px;z-index:-1;background:radial-gradient(closest-side,rgba(214,178,115,.16),transparent 70%)}
+@media (min-width:901px){
+  .hero-phone .phone{animation:float 7s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @media (prefers-reduced-motion:reduce){.hero-phone .phone{animation:none}}
+}
+
+/* ---------- pasek faktów ---------- */
+.facts{background:var(--tile-bottom);border-top:1px solid rgba(201,160,97,.18);padding:26px 0}
+.facts .wrap{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;font-size:14px;color:var(--cream)}
+.facts span{display:inline-flex;align-items:center;gap:9px;opacity:.85}
+.facts i{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+
+/* ---------- kroki ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{background:#fff8;border:1px solid rgba(32,55,46,.14);border-radius:var(--radius);padding:26px}
+.step .num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--tile);color:var(--gold);font-family:var(--serif);font-size:19px;margin-bottom:14px}
+.step h3{margin-bottom:8px}
+.step p{font-size:15px;opacity:.85}
+
+/* ---------- separator-droga ---------- */
+.divider{display:flex;justify-content:center;padding:8px 0}
+.divider svg{width:min(360px,70vw);height:12px;opacity:.85}
+
+/* ---------- galeria ---------- */
+.gallery{display:grid;grid-auto-flow:column;grid-auto-columns:min(258px,68vw);gap:26px;overflow-x:auto;padding:38px 22px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.gallery>figure{scroll-snap-align:center}
+.gallery .phone{width:100%}
+.gallery figcaption{margin-top:14px;text-align:center;font-size:13.5px;opacity:.8}
+.gallery figcaption b{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;letter-spacing:0;margin-bottom:2px}
+.swipe-hint{text-align:center;font-size:12.5px;opacity:.5;margin-top:2px}
+
+/* ---------- dzień i noc ---------- */
+.daynight{display:grid;grid-template-columns:1fr 1fr;gap:38px;max-width:760px;margin:46px auto 0}
+@media (max-width:700px){.daynight{grid-template-columns:1fr;gap:44px}}
+.daynight .tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- karty beta ---------- */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
+@media (max-width:860px){.twocol{grid-template-columns:1fr}}
+.panel{border-radius:var(--radius);padding:28px;border:1px solid rgba(32,55,46,.14);background:#fff8}
+.panel.dark-panel{background:var(--tile);border-color:rgba(201,160,97,.3);color:var(--cream)}
+.panel h3{margin-bottom:16px}
+.panel ul{list-style:none;display:grid;gap:12px;font-size:15px}
+.panel li{display:flex;gap:11px;align-items:flex-start}
+.panel li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--brass);margin-top:8px}
+.panel.dark-panel li::before{background:var(--gold)}
+.panel .soft{opacity:.75}
+
+/* ---------- feedback / zapisy ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:40px}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.bigcard{border-radius:22px;padding:34px;background:var(--tile);color:var(--cream);border:1px solid rgba(201,160,97,.3);display:flex;flex-direction:column;gap:18px}
+.bigcard.paper-card{background:#fff8;color:var(--ink);border-color:rgba(32,55,46,.14)}
+.bigcard h3{font-size:24px}
+.bigcard ol{padding-left:20px;display:grid;gap:9px;font-size:15px}
+.bigcard .btn{align-self:flex-start}
+.mail-fallback{font-size:13px;opacity:.65}
+.mail-fallback code{user-select:all;font-family:inherit;font-weight:700}
+.copy-ok{color:var(--brass-ink);font-weight:700}
+.dark .copy-ok,.bigcard:not(.paper-card) .copy-ok{color:var(--gold)}
+
+/* ---------- telefon/PWA ---------- */
+.install{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;margin-top:40px}
+@media (max-width:860px){.install{grid-template-columns:1fr}}
+.install ol{padding-left:20px;display:grid;gap:12px;font-size:15px}
+.install .qr{display:flex;align-items:center;gap:20px;background:var(--cream);color:var(--ink);border:1px solid rgba(201,160,97,.5);border-radius:var(--radius);padding:20px}
+.install .qr p{opacity:.9}
+.install .qr img{width:132px;border-radius:10px}
+.install .qr p{font-size:13.5px;opacity:.8}
+@media (max-width:700px){.install .qr{display:none}}
+.tip{margin-top:18px;font-size:13.5px;background:rgba(201,160,97,.14);border:1px solid rgba(201,160,97,.4);border-radius:12px;padding:12px 16px}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:760px;margin:40px auto 0}
+details{border-bottom:1px solid rgba(32,55,46,.16)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:19px 4px;font-family:var(--serif);font-size:19px;font-weight:500}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--sans);font-size:22px;color:var(--brass-ink);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 4px 20px;font-size:15px;opacity:.85;max-width:60ch}
+summary:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+
+/* ---------- finał ---------- */
+.final{text-align:center;padding:96px 0}
+.final h2{font-size:clamp(30px,4.6vw,50px);max-width:15em;margin:18px auto 12px}
+.final p{max-width:36em;margin:0 auto;opacity:.85}
+.final .cta-row{justify-content:center}
+
+/* ---------- stopka ---------- */
+footer{background:var(--tile-bottom);color:var(--cream);padding:44px 0 34px;font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-end}
+footer .col{display:grid;gap:8px}
+footer a{color:var(--gold);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .fine{opacity:.55}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.on{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="wordmark" href="#top" aria-label="Pathway">
+      <strong>Pathway</strong>
+      <svg viewBox="0 0 130 10" fill="none" aria-hidden="true">
+        <path class="road-travelled" d="M4 5 H42" stroke-width="2" stroke-linecap="round"/>
+        <circle class="road-here" cx="50" cy="5" r="2.9"/>
+        <path class="road-ahead" d="M60 5 H103" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.1 8" opacity="0.8"/>
+        <circle class="road-goal" cx="117" cy="5" r="3.4" stroke-width="1.6"/>
+      </svg>
+    </a>
+    <nav class="menu" aria-label="Menu">
+      <a href="#jak-dziala"><span class="pl">Jak działa</span><span class="en">How it works</span></a>
+      <a href="#ekrany"><span class="pl">Ekrany</span><span class="en">Screens</span></a>
+      <a href="#beta">Beta</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="bar-right">
+      <div class="lang" role="group" aria-label="Język / Language">
+        <button type="button" data-set-lang="pl" aria-pressed="true">PL</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-gold btn-sm" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener">
+        <span class="pl">Testuj betę</span><span class="en">Try the beta</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="dark grain hero">
+  <div class="wrap">
+    <div>
+      <span class="badge"><i></i><span class="pl">Otwarta beta · v75</span><span class="en">Open beta · v75</span></span>
+      <h1>
+        <span class="pl">Twój cel staje się <em>drogą</em> na prawdziwych ulicach.</span>
+        <span class="en">Your goal becomes a <em>road</em> on real streets.</span>
+      </h1>
+      <p class="lead">
+        <span class="pl">Pathway zamienia jeden cel w drogę na ulicach Manhattanu. Każdy wykonany ruch dokłada odcinek — mapa rośnie razem z&nbsp;Tobą. To nie trasa do przejścia, tylko żywy obraz Twojego postępu.</span>
+        <span class="en">Pathway turns one goal into a road on real Manhattan streets. Every move you finish adds a segment — the map grows with you. It is not a route to walk; it is a living picture of your progress.</span>
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener">
+          <span class="pl">Wypróbuj w przeglądarce</span><span class="en">Try it in your browser</span> →
+        </a>
+        <a class="btn btn-ghost" href="#zapisy">
+          <span class="pl">Zapisz się na pełną wersję</span><span class="en">Join the full-version list</span>
+        </a>
+      </div>
+      <p class="hero-note">
+        <span class="pl">Bez konta · bez instalacji · za darmo · aplikacja jest po angielsku</span>
+        <span class="en">No account · nothing to install · free · the app is in English</span>
+      </p>
+      <div class="hero-road" aria-hidden="true">
+        <svg viewBox="0 0 260 16" fill="none">
+          <path class="road-travelled draw" d="M6 8 H108" stroke-width="2.6" stroke-linecap="round"/>
+          <circle class="road-ring" cx="126" cy="8" r="7.6" stroke-width="1.2" opacity="0.38"/>
+          <circle class="road-here" cx="126" cy="8" r="4.2"/>
+          <path class="road-ahead" d="M146 8 H214" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0.1 11" opacity="0.85"/>
+          <circle class="road-goal" cx="238" cy="8" r="5.6" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-phone">
+      <div class="phone"><img src="img/maya-day.webp" width="780" height="1688" alt="Żywa mapa Pathway: trzy drogi celów na ulicach Manhattanu, 13 z 20 kamieni milowych, 62% utkane" fetchpriority="high"></div>
+      <p class="phone-caption">
+        <span class="pl">Prawdziwy ekran bety — mapa przykładowej Mai: 3&nbsp;drogi, 13&nbsp;z&nbsp;20 kamieni, 62%&nbsp;utkane.</span>
+        <span class="en">Real beta screen — Maya's example map: 3&nbsp;roads, 13&nbsp;of&nbsp;20 milestones, 62%&nbsp;woven.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="facts">
+  <div class="wrap">
+    <span><i></i><span class="pl">Prawdziwe ulice Manhattanu</span><span class="en">Real Manhattan streets</span></span>
+    <span><i></i><span class="pl">Zero kont i śledzenia — dane zostają u Ciebie</span><span class="en">No accounts, no tracking — your data stays on your device</span></span>
+    <span><i></i><span class="pl">Działa offline jako aplikacja na telefonie</span><span class="en">Works offline as a phone app</span></span>
+  </div>
+</div>
+
+<!-- ============ JAK DZIAŁA ============ -->
+<section id="jak-dziala" class="grain">
+  <div class="wrap">
+    <p class="kicker reveal"><span class="pl">Jak działa</span><span class="en">How it works</span></p>
+    <h2 class="reveal">
+      <span class="pl">Trzy kroki od celu do żywej mapy.</span>
+      <span class="en">Three steps from a goal to a living map.</span>
+    </h2>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">1</span>
+        <h3><span class="pl">Nazwij jeden cel</span><span class="en">Name one goal</span></h3>
+        <p><span class="pl">Zdrowie, praca, pieniądze albo własny kierunek. Zaczynasz od jednej rzeczy, nie od dziesięciu.</span><span class="en">Health, work, money or your own direction. You start with one thing, not ten.</span></p>
+      </div>
+      <div class="step reveal">
+        <span class="num">2</span>
+        <h3><span class="pl">Pathway układa drogę</span><span class="en">Pathway lays the road</span></h3>
+        <p><span class="pl">Cel dostaje prawdziwą drogę na siatce ulic Manhattanu, z kamieniami milowymi po kolei. Możesz ją przeciągnąć po legalnych ulicach i dopasować do siebie.</span><span class="en">Your goal gets a real road on the Manhattan street grid, with milestones in order. You can drag it along legal streets and shape it your way.</span></p>
+      </div>
+      <div class="step reveal">
+        <span class="num">3</span>
+        <h3><span class="pl">Ruch po ruchu tkasz mapę</span><span class="en">Move by move, you weave the map</span></h3>
+        <p><span class="pl">Codziennie widzisz jeden następny ruch — 15–60 minut. Każdy ukończony dokłada odcinek drogi i podnosi procent „utkania" mapy.</span><span class="en">Each day you see one next move — 15–60 minutes. Every finished move adds a road segment and raises how much of your map is woven.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 260 16" fill="none">
+    <path d="M6 8 H108" stroke="#76531b" stroke-width="2.6" stroke-linecap="round" opacity=".5"/>
+    <circle cx="126" cy="8" r="4.2" fill="#76531b" opacity=".6"/>
+    <path d="M146 8 H214" stroke="#76531b" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0.1 11" opacity=".5"/>
+    <circle cx="238" cy="8" r="5.6" stroke="#76531b" stroke-width="2" fill="none" opacity=".5"/>
+  </svg>
+</div>
+
+<!-- ============ EKRANY ============ -->
+<section id="ekrany">
+  <div class="wrap">
+    <p class="kicker reveal"><span class="pl">Prawdziwe ekrany bety</span><span class="en">Real beta screens</span></p>
+    <h2 class="reveal">
+      <span class="pl">Żadnych makiet. Tak wygląda v75.</span>
+      <span class="en">No mockups. This is v75.</span>
+    </h2>
+  </div>
+  <div class="gallery" tabindex="0" aria-label="Galeria ekranów">
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/entry.webp" width="780" height="1688" alt="Ekran startowy: wybór między przykładem Mai a własną mapą"></div>
+      <figcaption><b><span class="pl">Start</span><span class="en">Entry</span></b><span class="pl">Obejrzyj przykład Mai albo od razu zacznij własną mapę.</span><span class="en">See Maya's example or start your own map right away.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/maya-day.webp" width="780" height="1688" alt="Mapa Mai w dzień: trzy drogi celów na Manhattanie"></div>
+      <figcaption><b><span class="pl">Żywa mapa</span><span class="en">Living map</span></b><span class="pl">Trzy cele = trzy drogi. Kamienie odhaczone naprawdę, nie na niby.</span><span class="en">Three goals = three roads. Milestones checked for real.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/focus.webp" width="780" height="1688" alt="Ekran Focus: następny ruch Plan your 10K route, 15 minut"></div>
+      <figcaption><b>Focus</b><span class="pl">Jeden następny ruch, konkretny czas. Kończysz — wracasz na mapę.</span><span class="en">One next move with a real time box. Finish and land back on the map.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/progress.webp" width="780" height="1688" alt="Ekran Progress: radar postępu, 13 ruchów, 4h 40m zainwestowane"></div>
+      <figcaption><b>Progress</b><span class="pl">Widzisz, co się ukorzenia: ruchy, kamienie i zainwestowany czas.</span><span class="en">See what is taking root: moves, milestones and invested time.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/own-start.webp" width="780" height="1688" alt="Kreator nowej drogi: gotowe szablony celów do wyboru"></div>
+      <figcaption><b><span class="pl">Twoja droga</span><span class="en">Your road</span></b><span class="pl">Gotowe szablony: sen, kariera, poduszka finansowa, praktyka twórcza.</span><span class="en">Prepared routes: sleep, career, safety buffer, creative practice.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="phone"><img loading="lazy" src="img/maya-night.webp" width="780" height="1688" alt="Mapa nocą: ciemny Manhattan ze świecącymi oknami"></div>
+      <figcaption><b><span class="pl">Noc</span><span class="en">Night</span></b><span class="pl">Po zmroku mapa gaśnie do nokturnu — okna miasta świecą.</span><span class="en">After dark the map dims to a nocturne — the city windows glow.</span></figcaption>
+    </figure>
+  </div>
+  <p class="swipe-hint"><span class="pl">← przewiń →</span><span class="en">← swipe →</span></p>
+</section>
+
+<!-- ============ DZIEŃ I NOC ============ -->
+<section class="dark grain">
+  <div class="wrap">
+    <p class="kicker reveal"><span class="pl">Rytm dnia</span><span class="en">Day cycle</span></p>
+    <h2 class="reveal">
+      <span class="pl">Mapa żyje w rytmie Twojego dnia.</span>
+      <span class="en">The map lives in the rhythm of your day.</span>
+    </h2>
+    <p class="lead reveal" style="max-width:38em;margin-top:14px;opacity:.85">
+      <span class="pl">Poranek, dzień, wieczór i noc mają na mapie własne światło. Ten sam Manhattan o 12:30 i o 21:30 — bez żadnego filtra, tak to po prostu wygląda w aplikacji.</span>
+      <span class="en">Morning, day, evening and night each light the map differently. The same Manhattan at 12:30 and 21:30 — no filter, this is simply how the app looks.</span>
+    </p>
+    <div class="daynight">
+      <div class="reveal">
+        <span class="tag">☀ <span class="pl">Dzień · 12:30</span><span class="en">Day · 12:30</span></span>
+        <div class="phone"><img loading="lazy" src="img/maya-day.webp" width="780" height="1688" alt="Mapa w dzień"></div>
+      </div>
+      <div class="reveal">
+        <span class="tag">☾ <span class="pl">Noc · 21:30</span><span class="en">Night · 21:30</span></span>
+        <div class="phone"><img loading="lazy" src="img/maya-night.webp" width="780" height="1688" alt="Mapa w nocy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BETA ============ -->
+<section id="beta" class="grain">
+  <div class="wrap">
+    <p class="kicker reveal">Beta</p>
+    <h2 class="reveal">
+      <span class="pl">To jest beta. Mówimy wprost, co dostajesz.</span>
+      <span class="en">This is a beta. Here is exactly what you get.</span>
+    </h2>
+    <div class="twocol">
+      <div class="panel dark-panel reveal">
+        <h3><span class="pl">Co działa już dziś</span><span class="en">What works today</span></h3>
+        <ul>
+          <li><span class="pl">Pełna aplikacja w przeglądarce — telefon i komputer, bez konta.</span><span class="en">The full app in your browser — phone and desktop, no account.</span></li>
+          <li><span class="pl">Przykład Mai z przewodnikiem oraz Twoja własna mapa na Manhattanie.</span><span class="en">Maya's guided example plus your own Manhattan map.</span></li>
+          <li><span class="pl">Kształtowanie drogi palcem po prawdziwych, legalnych ulicach.</span><span class="en">Shaping your road by touch along real, legal streets.</span></li>
+          <li><span class="pl">Rytm dnia na mapie, ekrany Focus i Progress, eksport danych do pliku.</span><span class="en">The day cycle on the map, Focus and Progress screens, data export to a file.</span></li>
+          <li><span class="pl">Instalacja na ekranie głównym i działanie offline.</span><span class="en">Home-screen install and offline use.</span></li>
+        </ul>
+      </div>
+      <div class="panel reveal">
+        <h3><span class="pl">Nad czym myślimy dalej</span><span class="en">What we are thinking about next</span></h3>
+        <ul>
+          <li><span class="pl">Kolejne miasta poza Manhattanem.</span><span class="en">More cities beyond Manhattan.</span></li>
+          <li><span class="pl">Więcej szablonów celów i dróg.</span><span class="en">More goal and road templates.</span></li>
+          <li><span class="pl">Polska wersja językowa.</span><span class="en">A Polish translation.</span></li>
+          <li class="soft"><span class="pl">Kolejność wyznaczy Wasz feedback — dlatego ta strona istnieje.</span><span class="en">Your feedback sets the order — that is why this page exists.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEEDBACK + ZAPISY ============ -->
+<section id="zapisy" style="padding-top:0">
+  <div class="wrap">
+    <div class="split">
+      <div class="bigcard reveal">
+        <p class="kicker" style="color:var(--gold)"><span class="pl">Feedback</span><span class="en">Feedback</span></p>
+        <h3><span class="pl">Przetestuj i powiedz nam prawdę.</span><span class="en">Test it and tell us the truth.</span></h3>
+        <p style="opacity:.85;font-size:15px">
+          <span class="pl">Wystarczą trzy zdania — właśnie takie uwagi zmieniają kolejne wersje:</span>
+          <span class="en">Three sentences are enough — this is what shapes the next versions:</span>
+        </p>
+        <ol>
+          <li><span class="pl">Co było jasne od pierwszej minuty?</span><span class="en">What was clear from the first minute?</span></li>
+          <li><span class="pl">Gdzie się zatrzymałaś/zatrzymałeś albo pogubiłaś/pogubiłeś?</span><span class="en">Where did you stop or get lost?</span></li>
+          <li><span class="pl">Czego brakuje, żebyś używał(a) tego naprawdę?</span><span class="en">What is missing for you to use it for real?</span></li>
+        </ol>
+        <a class="btn btn-gold" id="mail-feedback" href="#">
+          <span class="pl">Wyślij feedback</span><span class="en">Send feedback</span>
+        </a>
+        <p class="mail-fallback">
+          <span class="pl">Wolisz zwykły mail? Napisz na</span><span class="en">Prefer plain email? Write to</span>
+          <code>fedorczak.michal@gmail.com</code>
+          · <button type="button" class="copy-btn" data-copy="fedorczak.michal@gmail.com" style="all:unset;cursor:pointer;text-decoration:underline"><span class="pl">kopiuj</span><span class="en">copy</span></button>
+          <span class="copy-ok" hidden><span class="pl">✓ skopiowano</span><span class="en">✓ copied</span></span>
+        </p>
+      </div>
+      <div class="bigcard paper-card reveal">
+        <p class="kicker"><span class="pl">Pełna wersja</span><span class="en">Full version</span></p>
+        <h3><span class="pl">Zapisz się — dostaniesz znać, gdy wyjdziemy z bety.</span><span class="en">Sign up — you will hear from us when we leave beta.</span></h3>
+        <p style="opacity:.85;font-size:15px">
+          <span class="pl">Jeden mail z zapisem wystarczy. Zero spamu: odezwiemy się przy starcie pełnej wersji i najwyżej przy dużych nowościach bety.</span>
+          <span class="en">One signup email is enough. Zero spam: we will write when the full version ships, and at most for major beta updates.</span>
+        </p>
+        <a class="btn btn-ink" id="mail-waitlist" href="#">
+          <span class="pl">Zapisz się mailem</span><span class="en">Sign up by email</span>
+        </a>
+        <p class="mail-fallback">
+          <span class="pl">Klik otworzy gotową wiadomość — wystarczy wysłać.</span>
+          <span class="en">The click opens a ready message — just hit send.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NA TELEFONIE ============ -->
+<section class="dark grain" id="telefon">
+  <div class="wrap">
+    <p class="kicker reveal"><span class="pl">Na telefonie</span><span class="en">On your phone</span></p>
+    <h2 class="reveal">
+      <span class="pl">Najlepiej smakuje z ekranu głównego.</span>
+      <span class="en">Best from your Home Screen.</span>
+    </h2>
+    <div class="install">
+      <div class="reveal">
+        <p class="lead" style="opacity:.85;margin-bottom:20px">
+          <span class="pl">Pathway to aplikacja webowa (PWA): ten sam adres działa w przeglądarce i jako pełnoekranowa aplikacja offline. Instalacja zajmuje 20 sekund i nie przechodzi przez żaden sklep:</span>
+          <span class="en">Pathway is a web app (PWA): the same address works in the browser and as a full-screen offline app. Installing takes 20 seconds and skips the app stores entirely:</span>
+        </p>
+        <ol>
+          <li><span class="pl">Otwórz <a href="https://fedorczakmichal-stack.github.io/pathway-live/phone.html" target="_blank" rel="noopener" style="color:var(--gold)">ten link</a> w Safari (iPhone) lub Chrome (Android).</span><span class="en">Open <a href="https://fedorczakmichal-stack.github.io/pathway-live/phone.html" target="_blank" rel="noopener" style="color:var(--gold)">this link</a> in Safari (iPhone) or Chrome (Android).</span></li>
+          <li><span class="pl">iPhone: Udostępnij <b>⎋</b> → „Dodaj do ekranu początkowego". Android: menu → „Zainstaluj aplikację".</span><span class="en">iPhone: Share <b>⎋</b> → "Add to Home Screen". Android: menu → "Install app".</span></li>
+          <li><span class="pl">Otwieraj z ikony — pełny ekran, działa też bez internetu.</span><span class="en">Open from the icon — full screen, works offline too.</span></li>
+        </ol>
+        <p class="tip">
+          <span class="pl">💡 Wskazówka: zainstaluj <b>zanim</b> zaczniesz własną mapę. Wersja zainstalowana i ta w przeglądarce trzymają dane osobno.</span>
+          <span class="en">💡 Tip: install <b>before</b> you start your own map. The installed app and the browser tab keep separate data.</span>
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="qr">
+          <img src="img/qr-phone.png" width="492" height="492" alt="Kod QR do bety Pathway na telefonie">
+          <p><span class="pl">Czytasz na komputerze? Zeskanuj telefonem — trafisz prosto do bety.</span><span class="en">Reading on a computer? Scan with your phone to jump straight into the beta.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <p class="kicker reveal">FAQ</p>
+    <h2 class="reveal"><span class="pl">Krótkie pytania, krótkie odpowiedzi.</span><span class="en">Short questions, short answers.</span></h2>
+    <div class="faq reveal">
+      <details>
+        <summary><span class="pl">Ile to kosztuje?</span><span class="en">How much does it cost?</span></summary>
+        <p><span class="pl">Beta jest w pełni darmowa i bez reklam. O modelu pełnej wersji zdecydujemy po becie — zapisani dowiedzą się pierwsi.</span><span class="en">The beta is completely free with no ads. Full-version pricing will be decided after the beta — the signup list hears first.</span></p>
+      </details>
+      <details>
+        <summary><span class="pl">Po jakiemu jest aplikacja?</span><span class="en">What language is the app in?</span></summary>
+        <p><span class="pl">Po angielsku. Język jest prosty i krótki, a polska wersja jest na liście rzeczy, o które można głosować feedbackiem.</span><span class="en">English. The copy is short and simple, and other languages are on the feedback-driven list.</span></p>
+      </details>
+      <details>
+        <summary><span class="pl">Co z moimi danymi?</span><span class="en">What about my data?</span></summary>
+        <p><span class="pl">Wszystko zostaje na Twoim urządzeniu — nie ma kont, serwera z danymi ani śledzenia. W ustawieniach masz eksport do pliku. Ta strona też niczego nie zbiera. Podkłady mapowe: © autorzy OpenStreetMap.</span><span class="en">Everything stays on your device — no accounts, no data server, no tracking. Settings include a file export. This page collects nothing either. Base maps: © OpenStreetMap contributors.</span></p>
+      </details>
+      <details>
+        <summary><span class="pl">Na czym to działa?</span><span class="en">What does it run on?</span></summary>
+        <p><span class="pl">iPhone (Safari), Android (Chrome) i każda nowoczesna przeglądarka na komputerze. Na telefonie możesz dodać aplikację do ekranu głównego — działa wtedy offline.</span><span class="en">iPhone (Safari), Android (Chrome) and any modern desktop browser. On a phone you can add it to your Home Screen — it then works offline.</span></p>
+      </details>
+      <details>
+        <summary><span class="pl">Dlaczego akurat Manhattan?</span><span class="en">Why Manhattan?</span></summary>
+        <p><span class="pl">Beta skupia się na jednym mieście, żeby drogi były naprawdę dopracowane: prawdziwa siatka ulic, legalne trasy, ręcznie kalibrowany teren. Kolejne miasta rozważamy po becie.</span><span class="en">The beta focuses on one city so the roads are genuinely polished: a real street graph, legal routes, hand-calibrated terrain. More cities are on the post-beta list.</span></p>
+      </details>
+      <details>
+        <summary><span class="pl">Czy mój postęp przepadnie po becie?</span><span class="en">Will my progress disappear after the beta?</span></summary>
+        <p><span class="pl">Nie planujemy niczego kasować — Twoja mapa mieszka u Ciebie na urządzeniu, a eksport do pliku daje Ci własną kopię zapasową.</span><span class="en">We do not plan to delete anything — your map lives on your device, and the file export gives you your own backup.</span></p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAŁ ============ -->
+<section class="dark grain final">
+  <div class="wrap">
+    <span class="badge"><i></i><span class="pl">Otwarta beta · testujesz w 2 minuty</span><span class="en">Open beta · testing takes 2 minutes</span></span>
+    <h2><span class="pl">Zacznij od jednego kierunku.</span><span class="en">Start with one direction.</span></h2>
+    <p><span class="pl">Obejrzyj mapę Mai, zrób jeden ruch i zobacz, jak rośnie droga. Potem napisz nam, co myślisz — to dosłownie zmienia produkt.</span><span class="en">See Maya's map, make one move and watch the road grow. Then tell us what you think — it literally shapes the product.</span></p>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener">
+        <span class="pl">Testuj betę teraz</span><span class="en">Test the beta now</span> →
+      </a>
+      <a class="btn btn-ghost" href="#zapisy"><span class="pl">Zapisz się na pełną wersję</span><span class="en">Join the full-version list</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="col">
+      <a class="wordmark" href="#top" aria-label="Pathway">
+        <strong>Pathway</strong>
+        <svg viewBox="0 0 130 10" fill="none" aria-hidden="true">
+          <path class="road-travelled" d="M4 5 H42" stroke-width="2" stroke-linecap="round"/>
+          <circle class="road-here" cx="50" cy="5" r="2.9"/>
+          <path class="road-ahead" d="M60 5 H103" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.1 8" opacity="0.8"/>
+          <circle class="road-goal" cx="117" cy="5" r="3.4" stroke-width="1.6"/>
+        </svg>
+      </a>
+      <span class="fine"><span class="pl">Żywa mapa do prawdziwego życia · beta v75 · 2026</span><span class="en">A living map for real life · beta v75 · 2026</span></span>
+    </div>
+    <div class="col" style="text-align:right">
+      <span><a href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener"><span class="pl">Aplikacja</span><span class="en">The app</span></a> · <a href="mailto:fedorczak.michal@gmail.com"><span class="pl">Kontakt</span><span class="en">Contact</span></a></span>
+      <span class="fine"><span class="pl">Podkłady mapowe © autorzy OpenStreetMap · ta strona nie zbiera żadnych danych</span><span class="en">Base maps © OpenStreetMap contributors · this page collects no data</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var MAIL="fedorczak.michal@gmail.com";
+
+  /* ---- język ---- */
+  function applyLang(lang){
+    root.setAttribute("data-lang",lang);
+    root.setAttribute("lang",lang);
+    document.querySelectorAll("[data-set-lang]").forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang")===lang));
+    });
+    document.title = lang==="pl"
+      ? "Pathway — otwarta beta. Twój cel staje się drogą na prawdziwych ulicach."
+      : "Pathway — open beta. Your goal becomes a road on real streets.";
+    try{localStorage.setItem("pathway-landing-lang",lang);}catch(e){}
+    buildMailLinks(lang);
+  }
+  document.querySelectorAll("[data-set-lang]").forEach(function(b){
+    b.addEventListener("click",function(){applyLang(b.getAttribute("data-set-lang"));});
+  });
+
+  /* ---- gotowe maile ---- */
+  function buildMailLinks(lang){
+    var fb, wl;
+    if(lang==="pl"){
+      fb={s:"Pathway beta — mój feedback",
+          b:"Cześć!\n\nPrzetestowałem/am betę Pathway (v75). Moje trzy odpowiedzi:\n\n1. Co było jasne od pierwszej minuty:\n\n2. Gdzie się zatrzymałem/am albo pogubiłem/am:\n\n3. Czego brakuje, żebym używał/a tego naprawdę:\n\nTestowałem/am na (telefon/komputer, przeglądarka):\n"};
+      wl={s:"Pathway — zapis na pełną wersję",
+          b:"Cześć!\n\nZapisuję się na informację o starcie pełnej wersji Pathway.\n\n(Opcjonalnie) Chętnie pomogę też w kolejnych testach bety: TAK / NIE\n"};
+    }else{
+      fb={s:"Pathway beta — my feedback",
+          b:"Hi!\n\nI tested the Pathway beta (v75). My three answers:\n\n1. What was clear from the first minute:\n\n2. Where I stopped or got lost:\n\n3. What is missing for me to use it for real:\n\nI tested on (phone/desktop, browser):\n"};
+      wl={s:"Pathway — full version signup",
+          b:"Hi!\n\nPlease let me know when the full version of Pathway ships.\n\n(Optional) I am happy to help with future beta tests: YES / NO\n"};
+    }
+    var f=document.getElementById("mail-feedback");
+    var w=document.getElementById("mail-waitlist");
+    if(f) f.href="mailto:"+MAIL+"?subject="+encodeURIComponent(fb.s)+"&body="+encodeURIComponent(fb.b);
+    if(w) w.href="mailto:"+MAIL+"?subject="+encodeURIComponent(wl.s)+"&body="+encodeURIComponent(wl.b);
+  }
+
+  var saved=null;
+  try{saved=localStorage.getItem("pathway-landing-lang");}catch(e){}
+  applyLang(saved==="en"?"en":"pl");
+
+  /* ---- kopiowanie adresu ---- */
+  document.querySelectorAll(".copy-btn").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var ok=btn.parentElement.querySelector(".copy-ok");
+      function done(){ if(ok){ok.hidden=false; setTimeout(function(){ok.hidden=true;},2200);} }
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(done,done);
+      }else{done();}
+    });
+  });
+
+  /* ---- reveal ---- */
+  var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var items=document.querySelectorAll(".reveal");
+  if(reduced||!("IntersectionObserver" in window)){
+    items.forEach(function(el){el.classList.add("on");});
+  }else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){e.target.classList.add("on"); io.unobserve(e.target);} });
+    },{threshold:.12});
+    items.forEach(function(el){io.observe(el);});
+  }
+})();
+</script>
+</body>
+</html>
