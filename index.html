@@ -817,9 +817,15 @@ details[open] p{animation:faqIn .35s ease}
     if(w) w.href="mailto:"+MAIL+"?subject="+encodeURIComponent(wl.s)+"&body="+encodeURIComponent(wl.b);
   }
 
+  /* Link może wymusić język (?lang=en) — social media celują w EN,
+     a bez tego gość z Instagrama lądował na polskiej wersji. Parametr
+     wygrywa z zapamiętanym wyborem i sam się zapamiętuje. */
+  var urlLang=null;
+  try{urlLang=new URLSearchParams(window.location.search).get("lang");}catch(e){}
   var saved=null;
   try{saved=localStorage.getItem("pathway-landing-lang");}catch(e){}
-  applyLang(saved==="en"?"en":"pl");
+  var startLang=(urlLang==="en"||urlLang==="pl")?urlLang:saved;
+  applyLang(startLang==="en"?"en":"pl");
 
   /* ---- kopiowanie adresu ---- */
   document.querySelectorAll(".copy-btn").forEach(function(btn){
