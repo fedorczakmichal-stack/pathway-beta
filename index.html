@@ -207,6 +207,34 @@ html:not(.js) .daycycle-ctl,html:not(.js) .daycycle-hint{display:none}
 @media (max-width:700px){.install .qr{display:none}}
 .tip{margin-top:18px;font-size:13.5px;background:rgba(201,160,97,.14);border:1px solid rgba(201,160,97,.4);border-radius:12px;padding:12px 16px}
 
+/* ---------- ankieta ---------- */
+.inline-link{color:var(--brass-ink);text-decoration:underline;text-underline-offset:2px}
+.dark .inline-link{color:var(--gold)}
+.survey{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+@media (max-width:860px){.survey{grid-template-columns:1fr}}
+.survey .q{border:1px solid rgba(32,55,46,.15);background:#fff8;border-radius:var(--radius);padding:20px 22px}
+.survey .q-wide{grid-column:1/-1}
+.survey legend{display:flex;gap:10px;align-items:flex-start;font-family:var(--serif);font-size:18px;line-height:1.25;margin-bottom:14px;padding:0}
+.q-no{flex:none;width:24px;height:24px;border-radius:50%;background:var(--tile);color:var(--gold);font-family:var(--sans);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
+.survey .opts{display:flex;flex-wrap:wrap;gap:8px}
+.survey .opts label{position:relative;display:inline-flex;align-items:center;border:1px solid rgba(32,55,46,.24);border-radius:999px;padding:8px 15px;font-size:14px;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.survey .opts input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;margin:0;cursor:pointer}
+.survey .opts label:hover{border-color:var(--brass-ink)}
+.survey .opts label:has(input:checked){background:var(--tile);border-color:var(--tile);color:var(--cream);font-weight:600}
+.survey .opts label:has(input:focus-visible){outline:3px solid var(--brass);outline-offset:2px}
+.survey textarea,.survey input[type=email]{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fffc;border:1px solid rgba(32,55,46,.24);border-radius:12px;padding:11px 13px;resize:vertical}
+.survey textarea:focus-visible,.survey input[type=email]:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.mail-line{display:block;font-size:13px;opacity:.8;margin:14px 0 6px}
+.survey-send{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.survey-note{grid-column:1/-1;font-size:13px;opacity:.72;margin-top:-4px}
+.survey-fallback{grid-column:1/-1;border:0}
+.survey-fallback summary{font-family:var(--sans);font-size:13.5px;font-weight:600;padding:8px 0;color:var(--brass-ink)}
+.survey-fallback summary::after{content:none}
+.survey-fallback textarea{margin-top:8px}
+.signup-row{display:grid;grid-template-columns:1.4fr .6fr;gap:24px;align-items:center}
+@media (max-width:760px){.signup-row{grid-template-columns:1fr}}
+.signup-act{display:flex;flex-direction:column;align-items:flex-start}
+
 /* ---------- FAQ ---------- */
 .faq{max-width:760px;margin:40px auto 0}
 details{border-bottom:1px solid rgba(32,55,46,.16)}
@@ -290,6 +318,7 @@ details[open] p{animation:faqIn .35s ease}
       <a href="#jak-dziala"><span class="pl">Jak działa</span><span class="en">How it works</span></a>
       <a href="#ekrany"><span class="pl">Ekrany</span><span class="en">Screens</span></a>
       <a href="#beta">Beta</a>
+      <a href="#ankieta"><span class="pl">Ankieta</span><span class="en">Survey</span></a>
       <a href="#faq">FAQ</a>
     </nav>
     <div class="bar-right">
@@ -323,8 +352,8 @@ details[open] p{animation:faqIn .35s ease}
         <a class="btn btn-gold" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener">
           <span class="pl">Wypróbuj w przeglądarce</span><span class="en">Try it in your browser</span> <span class="arr" aria-hidden="true">→</span>
         </a>
-        <a class="btn btn-ghost" href="#zapisy">
-          <span class="pl">Zapisz się na pełną wersję</span><span class="en">Join the full-version list</span>
+        <a class="btn btn-ghost" href="#ankieta">
+          <span class="pl">Wypełnij ankietę</span><span class="en">Fill in the survey</span>
         </a>
       </div>
       <p class="hero-note">
@@ -500,44 +529,126 @@ details[open] p{animation:faqIn .35s ease}
 </section>
 
 <!-- ============ FEEDBACK + ZAPISY ============ -->
+<section id="ankieta" class="grain" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker reveal"><span class="pl">Ankieta · 2 minuty</span><span class="en">Survey · 2 minutes</span></p>
+    <h2 class="reveal">
+      <span class="pl">Najpierw wejdź do apki. Potem powiedz nam, jak było.</span>
+      <span class="en">Open the app first. Then tell us how it went.</span>
+    </h2>
+    <p class="lead reveal" style="max-width:44em;margin-top:14px;opacity:.85">
+      <span class="pl">Pytamy o to, co faktycznie zrobiłaś/zrobiłeś — nie o wrażenia z opisu. Dlatego najpierw
+        <a href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener" class="inline-link">otwórz betę</a>
+        i zrób jeden ruch, a dopiero potem wróć tutaj. Odpowiedzi nie idą na żaden serwer — składamy z nich gotową wiadomość, którą wysyłasz sama/sam.</span>
+      <span class="en">We ask what you actually did, not what you think of a description. So
+        <a href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener" class="inline-link">open the beta</a>
+        first, make one move, then come back. Nothing goes to a server — your answers are assembled into a ready message that you send yourself.</span>
+    </p>
+
+    <form id="survey" class="survey reveal" novalidate>
+      <fieldset class="q">
+        <legend><span class="q-no">1</span><span class="pl">Jak daleko doszłaś/doszedłeś?</span><span class="en">How far did you get?</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="q1" value="Tylko przeczytałem stronę / Only read this page"><span class="pl">Tylko przeczytałem stronę</span><span class="en">Only read this page</span></label>
+          <label><input type="radio" name="q1" value="Obejrzałem przykład Mai / Looked at Maya's example"><span class="pl">Obejrzałem przykład Mai</span><span class="en">Looked at Maya's example</span></label>
+          <label><input type="radio" name="q1" value="Zacząłem własną mapę / Started my own map"><span class="pl">Zacząłem własną mapę</span><span class="en">Started my own map</span></label>
+          <label><input type="radio" name="q1" value="Zrobiłem pierwszy ruch / Finished a first move"><span class="pl">Zrobiłem pierwszy ruch</span><span class="en">Finished a first move</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="q">
+        <legend><span class="q-no">2</span><span class="pl">Czy pierwsza minuta była zrozumiała?</span><span class="en">Was the first minute clear?</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="q2" value="Tak, od razu / Yes, right away"><span class="pl">Tak, od razu</span><span class="en">Yes, right away</span></label>
+          <label><input type="radio" name="q2" value="Po chwili / After a moment"><span class="pl">Po chwili</span><span class="en">After a moment</span></label>
+          <label><input type="radio" name="q2" value="Nie bardzo / Not really"><span class="pl">Nie bardzo</span><span class="en">Not really</span></label>
+          <label><input type="radio" name="q2" value="W ogóle / Not at all"><span class="pl">W ogóle</span><span class="en">Not at all</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="q">
+        <legend><span class="q-no">3</span><span class="pl">Gdzie się zatrzymałaś/zatrzymałeś albo pogubiłaś/pogubiłeś?</span><span class="en">Where did you stop or get lost?</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="q3" value="Nigdzie / Nowhere"><span class="pl">Nigdzie</span><span class="en">Nowhere</span></label>
+          <label><input type="radio" name="q3" value="Ekran startowy / Entry screen"><span class="pl">Ekran startowy</span><span class="en">Entry screen</span></label>
+          <label><input type="radio" name="q3" value="Wybór celu / Choosing a goal"><span class="pl">Wybór celu</span><span class="en">Choosing a goal</span></label>
+          <label><input type="radio" name="q3" value="Kształtowanie trasy / Shaping the road"><span class="pl">Kształtowanie trasy</span><span class="en">Shaping the road</span></label>
+          <label><input type="radio" name="q3" value="Focus / Focus"><span class="pl">Focus</span><span class="en">Focus</span></label>
+          <label><input type="radio" name="q3" value="Gdzie indziej / Somewhere else"><span class="pl">Gdzie indziej</span><span class="en">Somewhere else</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="q">
+        <legend><span class="q-no">4</span><span class="pl">Jak byś się poczuła/poczuł, gdybyś jutro nie mogła/mógł już tego używać?</span><span class="en">How would you feel if you could no longer use it tomorrow?</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="q4" value="Bardzo bym żałował / Very disappointed"><span class="pl">Bardzo bym żałował(a)</span><span class="en">Very disappointed</span></label>
+          <label><input type="radio" name="q4" value="Trochę bym żałował / Somewhat disappointed"><span class="pl">Trochę bym żałował(a)</span><span class="en">Somewhat disappointed</span></label>
+          <label><input type="radio" name="q4" value="Wcale / Not disappointed"><span class="pl">Wcale</span><span class="en">Not disappointed</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="q">
+        <legend><span class="q-no">5</span><span class="pl">Czego brakuje, żebyś użyła/użył tego jutro znowu?</span><span class="en">What is missing for you to use it again tomorrow?</span></legend>
+        <div class="opts">
+          <label><input type="radio" name="q5" value="Nic, użyłbym / Nothing, I would use it"><span class="pl">Nic, użyłbym/użyłabym</span><span class="en">Nothing, I would use it</span></label>
+          <label><input type="radio" name="q5" value="Moje miasto / My own city"><span class="pl">Moje miasto</span><span class="en">My own city</span></label>
+          <label><input type="radio" name="q5" value="Wersja w moim jezyku / My own language"><span class="pl">Wersja w moim języku</span><span class="en">My own language</span></label>
+          <label><input type="radio" name="q5" value="Wiecej rodzajow celow / More kinds of goals"><span class="pl">Więcej rodzajów celów</span><span class="en">More kinds of goals</span></label>
+          <label><input type="radio" name="q5" value="Przypomnienia / Reminders"><span class="pl">Przypomnienia</span><span class="en">Reminders</span></label>
+          <label><input type="radio" name="q5" value="Cos innego / Something else"><span class="pl">Coś innego</span><span class="en">Something else</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="q q-wide">
+        <legend><span class="q-no">6</span><span class="pl">Cokolwiek chcesz dodać — najcenniejsze pytanie</span><span class="en">Anything you want to add — the most valuable one</span></legend>
+        <textarea id="q6" rows="4" data-ph-pl="Co Cię zaskoczyło? Co było irytujące? Co byś zmieniła/zmienił?" data-ph-en="What surprised you? What was annoying? What would you change?"></textarea>
+        <label class="mail-line" for="q7">
+          <span class="pl">E-mail (opcjonalnie — tylko jeśli chcesz wiedzieć, gdy wyjdziemy z bety)</span>
+          <span class="en">Email (optional — only if you want to hear when we leave beta)</span>
+        </label>
+        <input id="q7" type="email" autocomplete="email" data-ph-pl="twoj@email.pl" data-ph-en="you@email.com">
+      </fieldset>
+
+      <div class="survey-send">
+        <button type="submit" class="btn btn-gold">
+          <span class="pl">Wyślij odpowiedzi</span><span class="en">Send answers</span>
+        </button>
+        <button type="button" class="btn btn-line" id="survey-copy">
+          <span class="pl">Skopiuj zamiast wysyłać</span><span class="en">Copy instead of sending</span>
+        </button>
+        <span class="copy-ok" id="survey-copied" hidden><span class="pl">✓ skopiowano</span><span class="en">✓ copied</span></span>
+      </div>
+      <p class="survey-note">
+        <span class="pl">Klik otwiera gotową wiadomość z Twoimi odpowiedziami — wystarczy ją wysłać. Nie zbieramy niczego automatycznie.</span>
+        <span class="en">The button opens a ready message with your answers — just hit send. We collect nothing automatically.</span>
+      </p>
+      <details class="survey-fallback"><summary><span class="pl">Nie mam klienta poczty — pokaż odpowiedzi do skopiowania</span><span class="en">No mail client — show my answers to copy</span></summary>
+        <textarea id="survey-plain" rows="12" readonly aria-label="Odpowiedzi do skopiowania"></textarea>
+      </details>
+    </form>
+  </div>
+</section>
+
 <section id="zapisy" style="padding-top:0">
   <div class="wrap">
-    <div class="split">
-      <div class="bigcard reveal">
-        <p class="kicker" style="color:var(--gold)"><span class="pl">Feedback</span><span class="en">Feedback</span></p>
-        <h3><span class="pl">Przetestuj i powiedz nam prawdę.</span><span class="en">Test it and tell us the truth.</span></h3>
-        <p style="opacity:.85;font-size:15px">
-          <span class="pl">Wystarczą trzy zdania — właśnie takie uwagi zmieniają kolejne wersje:</span>
-          <span class="en">Three sentences are enough — this is what shapes the next versions:</span>
-        </p>
-        <ol>
-          <li><span class="pl">Co było jasne od pierwszej minuty?</span><span class="en">What was clear from the first minute?</span></li>
-          <li><span class="pl">Gdzie się zatrzymałaś/zatrzymałeś albo pogubiłaś/pogubiłeś?</span><span class="en">Where did you stop or get lost?</span></li>
-          <li><span class="pl">Czego brakuje, żebyś używał(a) tego naprawdę?</span><span class="en">What is missing for you to use it for real?</span></li>
-        </ol>
-        <a class="btn btn-gold" id="mail-feedback" href="mailto:fedorczak.michal@gmail.com">
-          <span class="pl">Wyślij feedback</span><span class="en">Send feedback</span>
-        </a>
-        <p class="mail-fallback">
-          <span class="pl">Wolisz zwykły mail? Napisz na</span><span class="en">Prefer plain email? Write to</span>
-          <code>fedorczak.michal@gmail.com</code>
-          · <button type="button" class="copy-btn" data-copy="fedorczak.michal@gmail.com" style="all:unset;cursor:pointer;text-decoration:underline"><span class="pl">kopiuj</span><span class="en">copy</span></button>
-          <span class="copy-ok" hidden><span class="pl">✓ skopiowano</span><span class="en">✓ copied</span></span>
-        </p>
-      </div>
-      <div class="bigcard paper-card reveal">
+    <div class="bigcard paper-card reveal signup-row">
+      <div>
         <p class="kicker"><span class="pl">Pełna wersja</span><span class="en">Full version</span></p>
         <h3><span class="pl">Zapisz się — damy Ci znać, gdy wyjdziemy z bety.</span><span class="en">Sign up — you will hear from us when we leave beta.</span></h3>
-        <p style="opacity:.85;font-size:15px">
+        <p style="opacity:.85;font-size:15px;margin-top:8px">
           <span class="pl">Jeden mail z zapisem wystarczy. Zero spamu: odezwiemy się przy starcie pełnej wersji i najwyżej przy dużych nowościach bety.</span>
           <span class="en">One signup email is enough. Zero spam: we will write when the full version ships, and at most for major beta updates.</span>
         </p>
+      </div>
+      <div class="signup-act">
         <a class="btn btn-ink" id="mail-waitlist" href="mailto:fedorczak.michal@gmail.com">
           <span class="pl">Zapisz się mailem</span><span class="en">Sign up by email</span>
         </a>
-        <p class="mail-fallback">
-          <span class="pl">Klik otworzy gotową wiadomość — wystarczy wysłać.</span>
-          <span class="en">The click opens a ready message — just hit send.</span>
+        <p class="mail-fallback" style="margin-top:10px">
+          <span class="pl">Wolisz zwykły mail? </span><span class="en">Prefer plain email? </span>
+          <code>fedorczak.michal@gmail.com</code>
+          · <button type="button" class="copy-btn" data-copy="fedorczak.michal@gmail.com" style="all:unset;cursor:pointer;text-decoration:underline"><span class="pl">kopiuj</span><span class="en">copy</span></button>
+          <span class="copy-ok" hidden><span class="pl">✓ skopiowano</span><span class="en">✓ copied</span></span>
         </p>
       </div>
     </div>
@@ -673,6 +784,9 @@ details[open] p{animation:faqIn .35s ease}
     document.querySelectorAll("[data-label-en]").forEach(function(el){
       el.setAttribute("aria-label", el.getAttribute(lang==="en"?"data-label-en":"data-label-pl"));
     });
+    document.querySelectorAll("[data-ph-pl]").forEach(function(el){
+      el.setAttribute("placeholder", el.getAttribute(lang==="en"?"data-ph-en":"data-ph-pl"));
+    });
     buildMailLinks(lang);
   }
   document.querySelectorAll("[data-set-lang]").forEach(function(b){
@@ -720,6 +834,64 @@ details[open] p{animation:faqIn .35s ease}
       }else{fallback();}
     });
   });
+
+  /* ---- ankieta: składamy gotową wiadomość, nic nie leci na serwer ---- */
+  var surveyForm=document.getElementById("survey");
+  if(surveyForm){
+    var QUESTIONS={
+      pl:["Jak daleko doszedłem","Czy pierwsza minuta była zrozumiała","Gdzie się zatrzymałem/pogubiłem",
+          "Jak bym się poczuł, gdyby jutro tego nie było","Czego brakuje, żeby użyć jutro znowu"],
+      en:["How far I got","Was the first minute clear","Where I stopped or got lost",
+          "How I would feel if it were gone tomorrow","What is missing to use it again tomorrow"]
+    };
+    function answerText(){
+      var lang=root.getAttribute("data-lang")==="en"?"en":"pl";
+      var lines=[];
+      for(var i=1;i<=5;i+=1){
+        var picked=surveyForm.querySelector('input[name="q'+i+'"]:checked');
+        var value=picked?picked.value:(lang==="pl"?"(bez odpowiedzi)":"(no answer)");
+        // Wartości niosą oba języki rozdzielone " / " — bierzemy właściwą stronę.
+        var parts=value.split(" / ");
+        var shown=parts.length>1?(lang==="en"?parts[1]:parts[0]):value;
+        lines.push(i+". "+QUESTIONS[lang][i-1]+": "+shown);
+      }
+      var open=(document.getElementById("q6").value||"").trim();
+      var mail=(document.getElementById("q7").value||"").trim();
+      lines.push("");
+      lines.push((lang==="pl"?"6. Dodatkowo: ":"6. Anything else: ")+(open||(lang==="pl"?"(nic)":"(nothing)")));
+      lines.push((lang==="pl"?"E-mail: ":"Email: ")+(mail||(lang==="pl"?"(nie podano)":"(not given)")));
+      lines.push("");
+      lines.push((lang==="pl"?"Testowałem na (telefon/komputer, przeglądarka): ":"Tested on (phone/desktop, browser): "));
+      return lines.join("\n");
+    }
+    function surveySubject(){
+      return root.getAttribute("data-lang")==="en"
+        ? "Pathway beta — survey answers"
+        : "Pathway beta — odpowiedzi z ankiety";
+    }
+    surveyForm.addEventListener("submit",function(event){
+      event.preventDefault();
+      window.location.href="mailto:"+MAIL
+        +"?subject="+encodeURIComponent(surveySubject())
+        +"&body="+encodeURIComponent(answerText());
+    });
+    var surveyCopy=document.getElementById("survey-copy");
+    var surveyCopied=document.getElementById("survey-copied");
+    var surveyPlain=document.getElementById("survey-plain");
+    surveyCopy.addEventListener("click",function(){
+      var text=answerText();
+      surveyPlain.value=text;
+      function shown(){ surveyCopied.hidden=false; setTimeout(function(){surveyCopied.hidden=true;},2400); }
+      function reveal(){ surveyFallback.open=true; surveyPlain.focus(); surveyPlain.select(); }
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(shown,reveal);
+      }else{ reveal(); }
+    });
+    var surveyFallback=document.querySelector(".survey-fallback");
+    surveyFallback.addEventListener("toggle",function(){
+      if(surveyFallback.open) surveyPlain.value=answerText();
+    });
+  }
 
   /* ---- dzień/noc: suwak + auto-demo do pierwszego dotknięcia ---- */
   var slider=document.getElementById("dayslider");
