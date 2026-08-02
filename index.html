@@ -212,9 +212,13 @@ html:not(.js) .daycycle-ctl,html:not(.js) .daycycle-hint{display:none}
 .dark .inline-link{color:var(--gold)}
 .survey{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
 @media (max-width:860px){.survey{grid-template-columns:1fr}}
-.survey .q{border:1px solid rgba(32,55,46,.15);background:#fff8;border-radius:var(--radius);padding:20px 22px}
+.survey .q{border:1px solid rgba(32,55,46,.15);background:#fff8;border-radius:var(--radius);padding:20px 22px;min-width:0}
 .survey .q-wide{grid-column:1/-1}
-.survey legend{display:flex;gap:10px;align-items:flex-start;font-family:var(--serif);font-size:18px;line-height:1.25;margin-bottom:14px;padding:0}
+/* Legend domyślnie siedzi NA ramce fieldsetu i wystaje ponad kartę.
+   float:left + width:100% wciąga go do środka jak zwykły blok;
+   następny element dostaje clear, żeby nie podpływał pod spód. */
+.survey legend{float:left;width:100%;display:flex;gap:10px;align-items:flex-start;font-family:var(--serif);font-size:18px;line-height:1.25;margin-bottom:14px;padding:0}
+.survey legend+*{clear:both}
 .q-no{flex:none;width:24px;height:24px;border-radius:50%;background:var(--tile);color:var(--gold);font-family:var(--sans);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-top:2px}
 .survey .opts{display:flex;flex-wrap:wrap;gap:8px}
 .survey .opts label{position:relative;display:inline-flex;align-items:center;border:1px solid rgba(32,55,46,.24);border-radius:999px;padding:8px 15px;font-size:14px;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
