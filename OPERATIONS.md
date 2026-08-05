@@ -1,6 +1,6 @@
 # Pathway beta — konfiguracja kanałów
 
-Stan roboczy: 2026-08-05.
+Stan zweryfikowany po wdrożeniu: 2026-08-05.
 
 ## Aktualne adresy
 
@@ -15,16 +15,30 @@ Stan roboczy: 2026-08-05.
 
 ## Linki organiczne
 
-Instagram bio:
+Instagram — aktualny link w bio (pole linku jest edytowalne tylko w aplikacji mobilnej):
 
 ```text
-https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=instagram&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=bio
+https://fedorczakmichal-stack.github.io/pathway-beta/?lang=en&utm_source=ig&utm_medium=social&utm_content=link_in_bio
 ```
 
-Facebook Page CTA:
+Facebook Page — zweryfikowany link profilu:
 
 ```text
-https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_cta
+https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_link
+```
+
+Aktualny Instagram bio:
+
+```text
+Make progress you can see.
+Each small next step grows your road—no streaks, no guilt.
+Try the free browser beta ↓
+```
+
+Aktualny Facebook bio:
+
+```text
+Pathway helps you keep moving on one meaningful goal. Each finished next step grows a road on a living map, so progress becomes something you can see. No streaks. No guilt. Free browser beta—no account or install.
 ```
 
 Post/Reel/Story: zmieniaj wyłącznie `utm_source` i `utm_content`, np. `reel_visible_progress`, `reel_no_guilt`, `story_one_next_move`.
@@ -41,6 +55,8 @@ https://formsubmit.co/ajax/fedorczak.michal@gmail.com
 
 Pierwsza kontrolowana wysyłka powoduje jednorazowy mail aktywacyjny FormSubmit. Dopóki właściciel skrzynki nie kliknie aktywacji, użytkownik ma dwa działające fallbacki: gotowy `mailto:` oraz kopię odpowiedzi.
 
+Mail aktywacyjny został wywołany kontrolowanym testem 2026-08-05. Aktywacja pozostaje działaniem właściciela skrzynki; po kliknięciu trzeba ponownie wykonać test survey i waitlist z publicznej strony.
+
 Docelowa migracja:
 
 1. Założyć zweryfikowany formularz Formspree albo własny backend na firmowym koncie.
@@ -55,3 +71,4 @@ Docelowa migracja:
 - Ankieta nie zapisuje automatycznie emaila na waitlistę.
 - Nie wysyłamy tekstu celu ani identyfikatora osoby w UTM/analityce.
 - Zatwierdzone tagi `v1-approved` i `v2-approved` pozostają nietknięte.
+- Wdrożenie klientocentryczne: commit `1d64122`, tag `v3-client-facing`.
