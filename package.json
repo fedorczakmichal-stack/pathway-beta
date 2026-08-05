@@ -1,0 +1,7 @@
+{
+  "name": "pathway-beta-landing",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/landing-contract.test.mjs"
+  }
+}

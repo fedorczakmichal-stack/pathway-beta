@@ -1,0 +1,57 @@
+# Pathway beta — konfiguracja kanałów
+
+Stan roboczy: 2026-08-05.
+
+## Aktualne adresy
+
+- Landing: `https://fedorczakmichal-stack.github.io/pathway-beta/`
+- Aplikacja: `https://fedorczakmichal-stack.github.io/pathway-live/`
+- Instagram: `https://www.instagram.com/pathway.day/`
+- Facebook: `https://www.facebook.com/pathway.day`
+- Tymczasowy kontakt i odbiorca formularzy: `fedorczak.michal@gmail.com`
+- Wersja publicznego produktu komunikowana na stronie: `v78`
+
+`pathway.day` jest roboczym kierunkiem marki, ale przed migracją trzeba ponownie potwierdzić zakup, DNS i stan domeny. Ten dokument nie jest dowodem własności ani aktywnej konfiguracji domeny.
+
+## Linki organiczne
+
+Instagram bio:
+
+```text
+https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=instagram&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=bio
+```
+
+Facebook Page CTA:
+
+```text
+https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_cta
+```
+
+Post/Reel/Story: zmieniaj wyłącznie `utm_source` i `utm_content`, np. `reel_visible_progress`, `reel_no_guilt`, `story_one_next_move`.
+
+Landing przepuszcza tylko: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`. Dodaje do linku aplikacji `landing_cta=header|hero|survey|phone|final|footer`. Parametry są przechowywane lokalnie i wychodzą tylko przy świadomym wysłaniu formularza.
+
+## Formularze — etap przejściowy
+
+Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `fedorczak.michal@gmail.com`:
+
+```text
+https://formsubmit.co/ajax/fedorczak.michal@gmail.com
+```
+
+Pierwsza kontrolowana wysyłka powoduje jednorazowy mail aktywacyjny FormSubmit. Dopóki właściciel skrzynki nie kliknie aktywacji, użytkownik ma dwa działające fallbacki: gotowy `mailto:` oraz kopię odpowiedzi.
+
+Docelowa migracja:
+
+1. Założyć zweryfikowany formularz Formspree albo własny backend na firmowym koncie.
+2. Podmienić `FORM_ENDPOINT`, oba atrybuty `action`, adresy `mailto:` i treść `privacy.html`.
+3. Ustawić ograniczenie domeny, ochronę antyspamową, retencję i test usunięcia danych.
+4. Wysłać kontrolowany test survey oraz waitlist; sprawdzić Inbox i Spam.
+5. Dopiero po tym usunąć oznaczenie tymczasowej skrzynki.
+
+## Zasady
+
+- Reklamy pozostają wyłączone do czasu działającego pomiaru activation/D7.
+- Ankieta nie zapisuje automatycznie emaila na waitlistę.
+- Nie wysyłamy tekstu celu ani identyfikatora osoby w UTM/analityce.
+- Zatwierdzone tagi `v1-approved` i `v2-approved` pozostają nietknięte.

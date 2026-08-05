@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f2f27">
+  <title>Pathway Privacy — Open Beta</title>
+  <meta name="description" content="How the Pathway open beta stores app progress and handles information submitted through the beta website.">
+  <link rel="canonical" href="https://fedorczakmichal-stack.github.io/pathway-beta/privacy.html">
+  <style>
+    :root{color-scheme:light;--ink:#20372e;--cream:#efe3d0;--paper:#f2e9d8;--tile:#123a30;--gold:#d6b273}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,sans-serif}
+    header{background:var(--tile);color:var(--cream)}.wrap{width:min(760px,calc(100% - 36px));margin:auto;padding:28px 0}
+    h1,h2{font-family:Georgia,serif;font-weight:500;line-height:1.15}h1{font-size:clamp(34px,7vw,54px);margin:42px 0 14px}h2{margin:38px 0 8px;font-size:25px}
+    a{color:inherit;text-underline-offset:3px}.back{font-weight:700;text-decoration:none}.note{border-left:4px solid var(--gold);padding:12px 16px;background:#fff7;margin:22px 0}
+    button{min-height:44px;border:0;border-radius:999px;padding:10px 18px;background:var(--tile);color:var(--cream);font:700 15px/1 system-ui,-apple-system,sans-serif;cursor:pointer}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.action-status{min-height:25px;font-weight:650}
+    ul{padding-left:22px}footer{margin-top:56px;border-top:1px solid #20372e2b;font-size:14px}a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><a class="back" href="./">← Pathway</a><h1>Privacy during the open beta</h1><p>Last updated: August 5, 2026</p></div></header>
+  <main class="wrap">
+    <p class="note"><strong>Short version:</strong> your goals and Pathway progress stay in your browser. We receive information only when you intentionally submit the survey, join the update list, or email us.</p>
+
+    <h2>App data</h2>
+    <p>Pathway stores your goals, progress and a local event summary on your device. There is no Pathway account. We do not automatically receive the text of your goals. You can export your app data from Settings.</p>
+
+    <h2>Local attribution</h2>
+    <p>The beta page may save allowed campaign labels such as <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code> and <code>utm_content</code> in local browser storage. They are not sent automatically. They are included only if you intentionally submit a survey or signup form, so we can understand which beta invitation led to useful feedback.</p>
+
+    <h2>Survey and update list</h2>
+    <p>When you submit a form, we receive the fields you selected or entered, the page language, the app version and the locally saved campaign labels. A survey email is optional and does not automatically add you to the update list.</p>
+    <p>If you explicitly check “Include an optional local usage summary,” the submission can also include event counts, active dates and whether a first move or a D7 return was observed in this browser. It never includes goal text or exact event timestamps.</p>
+
+    <h2>Temporary form delivery</h2>
+    <p>During this early beta, form submissions are delivered to <a href="mailto:fedorczak.michal@gmail.com">fedorczak.michal@gmail.com</a> through FormSubmit. FormSubmit processes the submission and necessary request metadata to deliver it and reduce abuse. You can avoid that service by using the visible direct-email or copy fallback instead.</p>
+
+    <h2>Automatic analytics</h2>
+    <p>This page does not currently send automatic analytics, advertising pixels or goal data. Standard hosting and network providers may still create security and access logs as part of operating their services.</p>
+
+    <h2>Retention and choices</h2>
+    <ul>
+      <li>Do not submit the forms if you do not want the information delivered.</li>
+      <li>Use the survey's optional email field only if you want a reply. Join the separate update list if you want launch news.</li>
+      <li>Ask us to delete a submitted response or remove your email from the update list at any time.</li>
+      <li>Use the dedicated control below to remove only the landing page's locally saved attribution. It does not delete your Pathway goals or progress.</li>
+    </ul>
+    <button type="button" id="delete-attribution">Delete landing attribution from this browser</button>
+    <p class="action-status" id="delete-status" role="status" aria-live="polite"></p>
+
+    <h2>Contact</h2>
+    <p>Questions, access or deletion requests: <a href="mailto:fedorczak.michal@gmail.com?subject=Pathway%20privacy">fedorczak.michal@gmail.com</a>.</p>
+  </main>
+  <footer><div class="wrap">Pathway open beta · <a href="./">Back to the beta page</a></div></footer>
+  <script>
+    document.getElementById("delete-attribution").addEventListener("click",function(){
+      var status=document.getElementById("delete-status");
+      try{
+        localStorage.removeItem("pathway-landing-attribution-v1");
+        status.textContent="Landing attribution was removed. Your Pathway goals and progress were not changed.";
+      }catch(error){
+        status.setAttribute("role","alert");
+        status.textContent="This browser did not allow the landing attribution to be removed. No app data was changed.";
+      }
+    });
+  </script>
+</body>
+</html>

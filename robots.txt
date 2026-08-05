@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fedorczakmichal-stack.github.io/pathway-beta/sitemap.xml
