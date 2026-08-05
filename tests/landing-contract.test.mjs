@@ -13,10 +13,10 @@ test("raw landing is English-first and client-facing", () => {
 
 test("English social metadata uses a cache-busted 1200x630 asset contract", async () => {
   assert.match(html, /og:locale" content="en_US"/);
-  assert.match(html, /og:image" content="[^"]+\/img\/og-v78-en\.jpg"/);
+  assert.match(html, /og:image" content="[^"]+\/img\/og-v80-en\.jpg"/);
   assert.match(html, /og:image:width" content="1200"/);
   assert.match(html, /og:image:height" content="630"/);
-  assert.ok((await stat(new URL("../img/og-v78-en.jpg", import.meta.url))).size > 10_000);
+  assert.ok((await stat(new URL("../img/og-v80-en.jpg", import.meta.url))).size > 10_000);
 });
 
 test("survey and waitlist have direct submission plus email fallbacks", () => {
