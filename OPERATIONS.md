@@ -9,7 +9,7 @@ Stan zweryfikowany po wdrożeniu: 2026-08-05.
 - Instagram: `https://www.instagram.com/pathway.day/`
 - Facebook: `https://www.facebook.com/pathway.day`
 - Tymczasowy kontakt i odbiorca formularzy: `fedorczak.michal@gmail.com`
-- Wersja publicznego produktu komunikowana na stronie: `v78`
+- Wersja publicznego produktu komunikowana na stronie: `v80` (zrzuty w `img/` pochodzą z tego samego builda; przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść maili, `app_version` w formularzu oraz `tests/landing-contract.test.mjs`)
 
 `pathway.day` jest roboczym kierunkiem marki, ale przed migracją trzeba ponownie potwierdzić zakup, DNS i stan domeny. Ten dokument nie jest dowodem własności ani aktywnej konfiguracji domeny.
 
