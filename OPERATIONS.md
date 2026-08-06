@@ -1,30 +1,31 @@
 # Pathway beta — konfiguracja kanałów
 
-Stan zweryfikowany po wdrożeniu: 2026-08-05.
+Stan zweryfikowany przed migracją domeny: 2026-08-06.
 
 ## Aktualne adresy
 
-- Landing: `https://fedorczakmichal-stack.github.io/pathway-beta/`
+- Landing: `https://yourpathway.app/`
+- Ankieta: `https://yourpathway.app/#ankieta`
 - Aplikacja: `https://fedorczakmichal-stack.github.io/pathway-live/`
 - Instagram: `https://www.instagram.com/pathway.day/`
 - Facebook: `https://www.facebook.com/pathway.day`
-- Tymczasowy kontakt i odbiorca formularzy: `fedorczak.michal@gmail.com`
+- Główny kontakt i odbiorca formularzy: `info@yourpathway.app`
 - Wersja publicznego produktu komunikowana na stronie: `v80` (zrzuty w `img/` pochodzą z tego samego builda; przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść maili, `app_version` w formularzu oraz `tests/landing-contract.test.mjs`)
 
-`pathway.day` jest roboczym kierunkiem marki, ale przed migracją trzeba ponownie potwierdzić zakup, DNS i stan domeny. Ten dokument nie jest dowodem własności ani aktywnej konfiguracji domeny.
+`yourpathway.app` jest główną domeną strony beta. Wcześniejszy adres GitHub Pages pozostaje technicznym adresem źródłowym i powinien przekierowywać do domeny głównej.
 
 ## Linki organiczne
 
 Instagram — aktualny link w bio (pole linku jest edytowalne tylko w aplikacji mobilnej):
 
 ```text
-https://fedorczakmichal-stack.github.io/pathway-beta/?lang=en&utm_source=ig&utm_medium=social&utm_content=link_in_bio
+https://yourpathway.app/?lang=en&utm_source=ig&utm_medium=social&utm_content=link_in_bio
 ```
 
 Facebook Page — zweryfikowany link profilu:
 
 ```text
-https://fedorczakmichal-stack.github.io/pathway-beta/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_link
+https://yourpathway.app/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_link
 ```
 
 Aktualny Instagram bio:
@@ -47,15 +48,15 @@ Landing przepuszcza tylko: `utm_source`, `utm_medium`, `utm_campaign`, `utm_cont
 
 ## Formularze — etap przejściowy
 
-Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `fedorczak.michal@gmail.com`:
+Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `info@yourpathway.app`:
 
 ```text
-https://formsubmit.co/ajax/fedorczak.michal@gmail.com
+https://formsubmit.co/ajax/info@yourpathway.app
 ```
 
 Pierwsza kontrolowana wysyłka powoduje jednorazowy mail aktywacyjny FormSubmit. Dopóki właściciel skrzynki nie kliknie aktywacji, użytkownik ma dwa działające fallbacki: gotowy `mailto:` oraz kopię odpowiedzi.
 
-Mail aktywacyjny został wywołany kontrolowanym testem 2026-08-05. Aktywacja pozostaje działaniem właściciela skrzynki; po kliknięciu trzeba ponownie wykonać test survey i waitlist z publicznej strony.
+Po migracji na firmową skrzynkę trzeba wywołać jednorazowy mail aktywacyjny FormSubmit dla `info@yourpathway.app`, kliknąć aktywację i ponownie wykonać test ankiety oraz waitlisty z publicznej strony.
 
 Docelowa migracja:
 

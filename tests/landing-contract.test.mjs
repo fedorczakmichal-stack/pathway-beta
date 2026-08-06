@@ -13,6 +13,8 @@ test("raw landing is English-first and client-facing", () => {
 
 test("English social metadata uses a cache-busted 1200x630 asset contract", async () => {
   assert.match(html, /og:locale" content="en_US"/);
+  assert.match(html, /rel="canonical" href="https:\/\/yourpathway\.app\/"/);
+  assert.match(html, /og:url" content="https:\/\/yourpathway\.app\/"/);
   assert.match(html, /og:image" content="[^"]+\/img\/og-v80-en\.jpg"/);
   assert.match(html, /og:image:width" content="1200"/);
   assert.match(html, /og:image:height" content="630"/);
@@ -20,10 +22,10 @@ test("English social metadata uses a cache-busted 1200x630 asset contract", asyn
 });
 
 test("survey and waitlist have direct submission plus email fallbacks", () => {
-  assert.match(html, /id="survey"[^>]+action="https:\/\/formsubmit\.co\/fedorczak\.michal@gmail\.com"/);
-  assert.match(html, /id="waitlist-form"[^>]+action="https:\/\/formsubmit\.co\/fedorczak\.michal@gmail\.com"/);
-  assert.match(html, /id="survey-mailto" href="mailto:fedorczak\.michal@gmail\.com"/);
-  assert.match(html, /id="mail-waitlist" href="mailto:fedorczak\.michal@gmail\.com"/);
+  assert.match(html, /id="survey"[^>]+action="https:\/\/formsubmit\.co\/info@yourpathway\.app"/);
+  assert.match(html, /id="waitlist-form"[^>]+action="https:\/\/formsubmit\.co\/info@yourpathway\.app"/);
+  assert.match(html, /id="survey-mailto" href="mailto:info@yourpathway\.app"/);
+  assert.match(html, /id="mail-waitlist" href="mailto:info@yourpathway\.app"/);
   for (let index = 1; index <= 5; index += 1) {
     assert.match(html, new RegExp(`name="q${index}"[^>]+required`));
   }
@@ -50,6 +52,7 @@ test("privacy and crawl support are present", async () => {
   assert.match(privacy, /removeItem\("pathway-landing-attribution-v1"\)/);
   assert.doesNotMatch(privacy, /Clear this site's browser storage/);
   assert.match(privacy, /does not delete your Pathway goals or progress/);
-  assert.match(robots, /Sitemap:/);
-  assert.match(sitemap, /privacy\.html/);
+  assert.match(privacy, /info@yourpathway\.app/);
+  assert.match(robots, /Sitemap: https:\/\/yourpathway\.app\/sitemap\.xml/);
+  assert.match(sitemap, /https:\/\/yourpathway\.app\/privacy\.html/);
 });
