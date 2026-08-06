@@ -1,6 +1,6 @@
 # Pathway beta — konfiguracja kanałów
 
-Stan zweryfikowany przed migracją domeny: 2026-08-06.
+Stan zweryfikowany po migracji domeny: 2026-08-06.
 
 ## Aktualne adresy
 
@@ -46,7 +46,7 @@ Post/Reel/Story: zmieniaj wyłącznie `utm_source` i `utm_content`, np. `reel_vi
 
 Landing przepuszcza tylko: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`. Dodaje do linku aplikacji `landing_cta=header|hero|survey|phone|final|footer`. Parametry są przechowywane lokalnie i wychodzą tylko przy świadomym wysłaniu formularza.
 
-## Formularze — etap przejściowy
+## Formularze — aktywne na firmowej skrzynce
 
 Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `info@yourpathway.app`:
 
@@ -54,9 +54,7 @@ Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `info@yourpathway.
 https://formsubmit.co/ajax/info@yourpathway.app
 ```
 
-Pierwsza kontrolowana wysyłka powoduje jednorazowy mail aktywacyjny FormSubmit. Dopóki właściciel skrzynki nie kliknie aktywacji, użytkownik ma dwa działające fallbacki: gotowy `mailto:` oraz kopię odpowiedzi.
-
-Po migracji na firmową skrzynkę trzeba wywołać jednorazowy mail aktywacyjny FormSubmit dla `info@yourpathway.app`, kliknąć aktywację i ponownie wykonać test ankiety oraz waitlisty z publicznej strony.
+FormSubmit dla `info@yourpathway.app` aktywowano 2026-08-06. Kontrolowane wysyłki ankiety i waitlisty zwróciły sukces, a oba zgłoszenia zostały potwierdzone w Inboxie firmowej skrzynki. Widoczne fallbacki `mailto:` i kopii odpowiedzi pozostają dostępne.
 
 Docelowa migracja:
 
