@@ -10,7 +10,7 @@ Stan zweryfikowany po migracji domeny: 2026-08-06.
 - Instagram: `https://www.instagram.com/pathway.day/`
 - Facebook: `https://www.facebook.com/pathway.day`
 - Główny kontakt i odbiorca formularzy: `info@yourpathway.app`
-- Wersja publicznego produktu komunikowana na stronie: `v80` (zrzuty w `img/` pochodzą z tego samego builda; przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść maili, `app_version` w formularzu oraz `tests/landing-contract.test.mjs`)
+- Wersja publicznego produktu komunikowana na stronie: `v81` (zrzuty w `img/` pochodzą z tego samego builda; przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść maili, `app_version` w formularzu oraz `tests/landing-contract.test.mjs`)
 
 `yourpathway.app` jest główną domeną strony beta. Wcześniejszy adres GitHub Pages pozostaje technicznym adresem źródłowym i powinien przekierowywać do domeny głównej.
 
