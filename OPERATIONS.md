@@ -1,6 +1,6 @@
 # Pathway beta — konfiguracja kanałów
 
-Stan zweryfikowany po migracji domeny: 2026-08-06.
+Stan zweryfikowany po migracji domeny: 2026-08-08.
 
 ## Aktualne adresy
 
@@ -9,8 +9,8 @@ Stan zweryfikowany po migracji domeny: 2026-08-06.
 - Aplikacja: `https://fedorczakmichal-stack.github.io/pathway-live/`
 - Instagram: `https://www.instagram.com/pathway.day/`
 - Facebook: `https://www.facebook.com/pathway.day`
-- Główny kontakt i odbiorca formularzy: `info@yourpathway.app`
-- Wersja publicznego produktu komunikowana na stronie: `v81` (zrzuty w `img/` pochodzą z tego samego builda; przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść maili, `app_version` w formularzu oraz `tests/landing-contract.test.mjs`)
+- Główny kontakt i odbiorca wiadomości: `info@yourpathway.app`
+- Wersja publicznego produktu komunikowana na stronie: `v82` (przy podbiciu wersji zmienić RAZEM: badge, podpis galerii, stopkę, temat i treść szkiców e-mail, plik OG oraz `tests/landing-contract.test.mjs`)
 
 `yourpathway.app` jest główną domeną strony beta. Wcześniejszy adres GitHub Pages pozostaje technicznym adresem źródłowym i powinien przekierowywać do domeny głównej.
 
@@ -28,41 +28,40 @@ Facebook Page — zweryfikowany link profilu:
 https://yourpathway.app/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_link
 ```
 
-Aktualny Instagram bio:
+Docelowy Instagram bio po publikacji v82:
 
 ```text
 Make progress you can see.
 Each small next step grows your road—no streaks, no guilt.
-Try the free browser beta ↓
+Try the free v82 browser beta ↓
 ```
 
-Aktualny Facebook bio:
+Docelowy Facebook bio po publikacji v82:
 
 ```text
-Pathway helps you keep moving on one meaningful goal. Each finished next step grows a road on a living map, so progress becomes something you can see. No streaks. No guilt. Free browser beta—no account or install.
+Pathway helps you keep moving on one meaningful goal. Each finished next step grows a road on a living map, so progress becomes something you can see. No streaks. No guilt. Free v82 browser beta—no account or install.
 ```
 
 Post/Reel/Story: zmieniaj wyłącznie `utm_source` i `utm_content`, np. `reel_visible_progress`, `reel_no_guilt`, `story_one_next_move`.
 
-Landing przepuszcza tylko: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`. Dodaje do linku aplikacji `landing_cta=header|hero|survey|phone|final|footer`. Parametry są przechowywane lokalnie i wychodzą tylko przy świadomym wysłaniu formularza.
+Landing przepuszcza tylko: `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`. Dodaje do linku aplikacji `landing_cta=header|hero|survey|phone|final|footer`. Parametry są przechowywane lokalnie i pojawiają się tylko w szkicu wiadomości z ankiety, którą użytkownik sam może wysłać.
 
-## Formularze — aktywne na firmowej skrzynce
+## Ankieta i zapisy — bez pośrednika formularzowego
 
-Aktualny endpoint AJAX jest zbudowany w `index.html` z adresu `info@yourpathway.app`:
+Strona nie korzysta z FormSubmit ani innego endpointu. Oba formularze walidują pola lokalnie i przygotowują szkic skierowany do:
 
 ```text
-https://formsubmit.co/ajax/info@yourpathway.app
+info@yourpathway.app
 ```
 
-FormSubmit dla `info@yourpathway.app` aktywowano 2026-08-06. Kontrolowane wysyłki ankiety i waitlisty zwróciły sukces, a oba zgłoszenia zostały potwierdzone w Inboxie firmowej skrzynki. Widoczne fallbacki `mailto:` i kopii odpowiedzi pozostają dostępne.
+Użytkownik musi sam kliknąć „Wyślij” w swoim kliencie poczty. Strona nie pokazuje potwierdzenia dostarczenia i nie resetuje odpowiedzi po otwarciu szkicu. Ankieta ma jawny fallback kopiowania pełnych odpowiedzi. Jeśli treść przekracza bezpieczny limit adresu `mailto:`, strona przygotowuje krótki szkic i pokazuje pełne odpowiedzi do wklejenia. Szkic zapisu zawiera wpisany adres e-mail oraz stan zgody na przyszłe testy.
 
-Docelowa migracja:
+Ograniczenia tego rozwiązania:
 
-1. Założyć zweryfikowany formularz Formspree albo własny backend na firmowym koncie.
-2. Podmienić `FORM_ENDPOINT`, oba atrybuty `action`, adresy `mailto:` i treść `privacy.html`.
-3. Ustawić ograniczenie domeny, ochronę antyspamową, retencję i test usunięcia danych.
-4. Wysłać kontrolowany test survey oraz waitlist; sprawdzić Inbox i Spam.
-5. Dopiero po tym usunąć oznaczenie tymczasowej skrzynki.
+1. Wymaga skonfigurowanej obsługi linków e-mail na urządzeniu użytkownika.
+2. Nie daje panelu statystyk, automatycznej deduplikacji ani potwierdzenia doręczenia.
+3. Wyniki są obsługiwane bezpośrednio w skrzynce Google Workspace.
+4. Automatyczna wysyłka jednym kliknięciem wymagałaby własnego backendu i dostawcy poczty; nie należy jej dodawać bez osobnej decyzji o retencji, ochronie antyspamowej i kosztach.
 
 ## Zasady
 
@@ -71,3 +70,11 @@ Docelowa migracja:
 - Nie wysyłamy tekstu celu ani identyfikatora osoby w UTM/analityce.
 - Zatwierdzone tagi `v1-approved` i `v2-approved` pozostają nietknięte.
 - Wdrożenie klientocentryczne: commit `1d64122`, tag `v3-client-facing`.
+
+## Zabezpieczenia procesu GitHub Pages
+
+- Przed zmianą domeny zawsze odczytać stan Pages i certyfikatu. Nigdy nie usuwać i nie dodawać ponownie `CNAME` tylko dlatego, że certyfikat oczekuje — taki cykl anuluje i uruchamia provisioning od początku.
+- `.nojekyll` pozostaje celowo, aby statyczna strona omijała Jekylla. Nie jest i nie może być traktowany jako naprawa certyfikatu TLS.
+- Lokalny `main` synchronizować wyłącznie przez `git fetch` i czysty fast-forward. Bez resetu, rebase’u i force-push.
+- `main` jest chroniony: publikacje przechodzą przez pull request, wymagają liniowej historii i nie pozwalają na force-push ani usunięcie gałęzi.
+- Gdy certyfikat ma stan inny niż `approved`, nie uruchamiać zbędnych buildów i nie zmieniać DNS. Po 24 godzinach eskalować do GitHub Support z `/pages`, `/pages/health`, DNS, TLS i CT zamiast kolejnego resetu.
