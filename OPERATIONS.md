@@ -70,3 +70,11 @@ Ograniczenia tego rozwiązania:
 - Nie wysyłamy tekstu celu ani identyfikatora osoby w UTM/analityce.
 - Zatwierdzone tagi `v1-approved` i `v2-approved` pozostają nietknięte.
 - Wdrożenie klientocentryczne: commit `1d64122`, tag `v3-client-facing`.
+
+## Zabezpieczenia procesu GitHub Pages
+
+- Przed zmianą domeny zawsze odczytać stan Pages i certyfikatu. Nigdy nie usuwać i nie dodawać ponownie `CNAME` tylko dlatego, że certyfikat oczekuje — taki cykl anuluje i uruchamia provisioning od początku.
+- `.nojekyll` pozostaje celowo, aby statyczna strona omijała Jekylla. Nie jest i nie może być traktowany jako naprawa certyfikatu TLS.
+- Lokalny `main` synchronizować wyłącznie przez `git fetch` i czysty fast-forward. Bez resetu, rebase’u i force-push.
+- `main` jest chroniony: publikacje przechodzą przez pull request, wymagają liniowej historii i nie pozwalają na force-push ani usunięcie gałęzi.
+- Gdy certyfikat ma stan inny niż `approved`, nie uruchamiać zbędnych buildów i nie zmieniać DNS. Po 24 godzinach eskalować do GitHub Support z `/pages`, `/pages/health`, DNS, TLS i CT zamiast kolejnego resetu.
