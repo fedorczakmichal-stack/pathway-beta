@@ -28,7 +28,7 @@ Facebook Page — zweryfikowany link profilu:
 https://yourpathway.app/?utm_source=facebook&utm_medium=organic_social&utm_campaign=open_beta_us&utm_content=page_link
 ```
 
-Aktualny Instagram bio:
+Docelowy Instagram bio po publikacji v82:
 
 ```text
 Make progress you can see.
@@ -36,7 +36,7 @@ Each small next step grows your road—no streaks, no guilt.
 Try the free v82 browser beta ↓
 ```
 
-Aktualny Facebook bio:
+Docelowy Facebook bio po publikacji v82:
 
 ```text
 Pathway helps you keep moving on one meaningful goal. Each finished next step grows a road on a living map, so progress becomes something you can see. No streaks. No guilt. Free v82 browser beta—no account or install.

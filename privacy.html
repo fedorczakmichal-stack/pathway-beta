@@ -29,11 +29,11 @@
     <p>The beta page may save allowed campaign labels such as <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code> and <code>utm_content</code> in local browser storage. They are not sent automatically. They appear only in a survey email draft that you choose to send, so we can understand which beta invitation led to useful feedback.</p>
 
     <h2>Survey and update list</h2>
-    <p>When you use either form, the page prepares an email draft addressed to <a href="mailto:info@yourpathway.app">info@yourpathway.app</a>. The page does not send it. We receive the fields you selected or entered only after you review the draft and press “Send” in your own email app. A survey email does not automatically add you to the update list.</p>
+    <p>When you use either form, the page prepares an email draft addressed to <a href="mailto:info@yourpathway.app">info@yourpathway.app</a>. Opening that draft passes its content to your configured email app or webmail provider, which may save it as a draft. Pathway receives the message only after you review it and press “Send”. A survey email does not automatically add you to the update list.</p>
     <p>If you explicitly check “Include an optional local usage summary,” the survey draft can also include event counts, active dates and whether a first move or a D7 return was observed in this browser. It never includes goal text or exact event timestamps.</p>
 
     <h2>User-controlled email delivery</h2>
-    <p>The beta website has no form processor and does not transmit survey or signup data itself. It opens a pre-filled message in your configured email app. Your email provider processes the message only if you send it. The visible copy option copies the survey text locally and sends nothing.</p>
+    <p>The beta website does not post survey or signup data to a form processor. It creates a <code>mailto:</code> link with the information you entered. Opening the link gives that information to your configured email app or webmail provider; Pathway receives it only if you send the message. The visible copy option copies the survey text locally and does not open an email draft.</p>
 
     <h2>Automatic analytics</h2>
     <p>This page does not currently send automatic analytics, advertising pixels or goal data. Standard hosting and network providers may still create security and access logs as part of operating their services.</p>

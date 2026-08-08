@@ -36,6 +36,10 @@ test("survey and waitlist prepare user-controlled email drafts", () => {
   assert.match(html, /enteredEmail/);
   assert.match(html, /testingAllowed/);
   assert.match(html, /window\.location\.href=link\.href/);
+  assert.match(html, /Pathway v82 — survey answers/);
+  assert.match(html, /Pathway v82 — full version signup/);
+  assert.match(html, /if\(!surveyFallback\.open\)/);
+  assert.doesNotMatch(html, /navigator\.clipboard\.writeText\(longText\)/);
   for (let index = 1; index <= 5; index += 1) {
     assert.match(html, new RegExp(`name="q${index}"[^>]+required`));
   }
@@ -61,7 +65,8 @@ test("privacy and crawl support are present", async () => {
   const sitemap = await readFile(new URL("../sitemap.xml", import.meta.url), "utf8");
   assert.match(privacy, /User-controlled email delivery/);
   assert.doesNotMatch(privacy, /FormSubmit/i);
-  assert.match(privacy, /does not transmit survey or signup data itself/);
+  assert.match(privacy, /may save it as a draft/);
+  assert.match(privacy, /Pathway receives the message only after/);
   assert.match(privacy, /removeItem\("pathway-landing-attribution-v1"\)/);
   assert.doesNotMatch(privacy, /Clear this site's browser storage/);
   assert.match(privacy, /does not delete your Pathway goals or progress/);

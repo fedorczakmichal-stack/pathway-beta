@@ -586,10 +586,10 @@ details[open] p{animation:faqIn .35s ease}
     <p class="lead reveal" style="max-width:44em;margin-top:14px;opacity:.85">
       <span class="pl">Pytamy o to, co faktycznie zrobiłaś/zrobiłeś — nie o wrażenia z opisu. Dlatego najpierw
         <a data-app-cta="survey" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener" class="inline-link">otwórz betę</a>
-        i zrób jeden ruch, a dopiero potem wróć tutaj. Formularz przygotuje wiadomość do skrzynki Pathway; nic nie zostanie wysłane, dopóki nie klikniesz „Wyślij” w swojej poczcie.</span>
+        i zrób jeden ruch, a dopiero potem wróć tutaj. Formularz przygotuje wiadomość do skrzynki Pathway. Otwarcie szkicu przekazuje odpowiedzi do wybranej poczty, ale Pathway otrzyma je dopiero, gdy klikniesz w niej „Wyślij”.</span>
       <span class="en">We ask what you actually did, not what you think of a description. So
         <a data-app-cta="survey" href="https://fedorczakmichal-stack.github.io/pathway-live/" target="_blank" rel="noopener" class="inline-link">open the beta</a>
-        first, make one move, then come back. The form prepares an email to the Pathway inbox; nothing is sent until you press “Send” in your email app.</span>
+        first, make one move, then come back. The form prepares an email to the Pathway inbox. Opening the draft passes the answers to your chosen email service, but Pathway receives them only after you press “Send” there.</span>
     </p>
 
     <form id="survey" class="survey reveal" action="mailto:info@yourpathway.app" method="POST" enctype="text/plain" accept-charset="UTF-8">
@@ -676,8 +676,8 @@ details[open] p{animation:faqIn .35s ease}
       </div>
       <p class="form-status" id="survey-status" role="status" aria-live="polite"></p>
       <p class="survey-note">
-        <span class="pl">Strona tylko przygotowuje szkic. Dane opuszczą urządzenie dopiero, gdy samodzielnie wyślesz wiadomość w swojej poczcie. <a href="privacy.html">Prywatność</a>.</span>
-        <span class="en">The page only prepares a draft. Your data leaves the device only when you send the message yourself in your email app. <a href="privacy.html">Privacy</a>.</span>
+        <span class="pl">Strona nie wysyła formularza do pośrednika. Otwarcie szkicu przekazuje jego treść do skonfigurowanej poczty; Pathway otrzyma ją dopiero po kliknięciu „Wyślij”. <a href="privacy.html">Prywatność</a>.</span>
+        <span class="en">The page does not post the form to an intermediary. Opening the draft passes its content to your configured email service; Pathway receives it only after you press “Send”. <a href="privacy.html">Privacy</a>.</span>
       </p>
       <details class="survey-fallback"><summary><span class="pl">Pokaż odpowiedzi do skopiowania</span><span class="en">Show my answers to copy</span></summary>
         <textarea id="survey-plain" rows="12" readonly aria-label="Odpowiedzi do skopiowania" data-label-pl="Odpowiedzi do skopiowania" data-label-en="Answers to copy"></textarea>
@@ -871,25 +871,19 @@ details[open] p{animation:faqIn .35s ease}
 
   /* ---- gotowe maile ---- */
   function buildMailLinks(lang){
-    var fb, wl;
+    var wl;
     var waitlistEmail=document.getElementById("waitlist-email");
     var waitlistTesting=document.getElementById("waitlist-testing");
     var enteredEmail=waitlistEmail?waitlistEmail.value.trim():"";
     var testingAllowed=Boolean(waitlistTesting&&waitlistTesting.checked);
     if(lang==="pl"){
-      fb={s:"Pathway beta — mój feedback",
-          b:"Cześć!\n\nPrzetestowałem/am betę Pathway (v82). Moje trzy odpowiedzi:\n\n1. Co było jasne od pierwszej minuty:\n\n2. Gdzie się zatrzymałem/am albo pogubiłem/am:\n\n3. Czego brakuje, żebym używał/a tego naprawdę:\n\nTestowałem/am na (telefon/komputer, przeglądarka):\n"};
-      wl={s:"Pathway — zapis na pełną wersję",
+      wl={s:"Pathway v82 — zapis na pełną wersję",
           b:"Cześć!\n\nProszę zapisać mnie na informację o starcie pełnej wersji Pathway.\n\nAdres do zapisania: "+(enteredEmail||"(wpisz adres e-mail)")+"\nZaproszenia do przyszłych testów bety: "+(testingAllowed?"TAK":"NIE")+"\n"};
     }else{
-      fb={s:"Pathway beta — my feedback",
-          b:"Hi!\n\nI tested the Pathway beta (v82). My three answers:\n\n1. What was clear from the first minute:\n\n2. Where I stopped or got lost:\n\n3. What is missing for me to use it for real:\n\nI tested on (phone/desktop, browser):\n"};
-      wl={s:"Pathway — full version signup",
+      wl={s:"Pathway v82 — full version signup",
           b:"Hi!\n\nPlease add me to the full-version launch update list.\n\nEmail to add: "+(enteredEmail||"(enter your email)")+"\nInvitations to future beta tests: "+(testingAllowed?"YES":"NO")+"\n"};
     }
-    var f=document.getElementById("mail-feedback");
     var w=document.getElementById("mail-waitlist");
-    if(f) f.href="mailto:"+MAIL+"?subject="+encodeURIComponent(fb.s)+"&body="+encodeURIComponent(fb.b);
     if(w) w.href="mailto:"+MAIL+"?subject="+encodeURIComponent(wl.s)+"&body="+encodeURIComponent(wl.b);
   }
 
@@ -1049,8 +1043,8 @@ details[open] p{animation:faqIn .35s ease}
     }
     function surveySubject(){
       return root.getAttribute("data-lang")==="en"
-        ? "Pathway beta — survey answers"
-        : "Pathway beta — odpowiedzi z ankiety";
+        ? "Pathway v82 — survey answers"
+        : "Pathway v82 — odpowiedzi z ankiety";
     }
     function refreshSurveyMailto(){
       var link=document.getElementById("survey-mailto");
@@ -1062,8 +1056,8 @@ details[open] p{animation:faqIn .35s ease}
         link.setAttribute("data-draft-mode","full");
       }else{
         var shortBody=root.getAttribute("data-lang")==="pl"
-          ? "Moje odpowiedzi są zbyt długie dla bezpiecznego szkicu w przeglądarce. Skopiowałem/am je na tej stronie — wkleję je poniżej przed wysłaniem.\n\n"
-          : "My answers are too long for a reliable browser email draft. I copied them on the page and will paste them below before sending.\n\n";
+          ? "Moje odpowiedzi są zbyt długie dla niezawodnego szkicu w przeglądarce. Wkleję je poniżej przed wysłaniem.\n\n"
+          : "My answers are too long for a reliable browser email draft. I will paste them below before sending.\n\n";
         link.href=mailtoHref(surveySubject(),shortBody);
         link.setAttribute("data-draft-mode","copy");
       }
@@ -1080,13 +1074,18 @@ details[open] p{animation:faqIn .35s ease}
       if(link.getAttribute("data-draft-mode")==="copy"){
         var longText=answerText();
         surveyPlain.value=longText;
-        surveyFallback.open=true;
-        if(navigator.clipboard&&navigator.clipboard.writeText){
-          navigator.clipboard.writeText(longText).catch(function(){});
+        if(!surveyFallback.open){
+          surveyFallback.open=true;
+          surveyPlain.focus();
+          surveyPlain.select();
+          setStatus(status,"",
+            "Odpowiedzi są długie. Najpierw użyj „Skopiuj zamiast wysyłać” (lub skopiuj tekst z pola), a potem ponownie otwórz szkic e-mail.",
+            "Your answers are long. First use “Copy instead of sending” (or copy the text from the field), then open the email draft again.");
+          return;
         }
         openMailDraft(link,status,
-          "Odpowiedzi są długie: skopiuj je z pola poniżej, wklej do otwartego szkicu i kliknij „Wyślij”.",
-          "Your answers are long: copy them from the field below, paste them into the opened draft, then press “Send”.");
+          "Otwieramy krótki szkic. Wklej do niego skopiowane odpowiedzi i kliknij „Wyślij”.",
+          "Opening a short draft. Paste your copied answers into it, then press “Send”.");
       }else{
         openMailDraft(link,status,
           "Szkic jest przygotowany. Sprawdź swoją pocztę i kliknij w niej „Wyślij”, aby dostarczyć odpowiedzi.",
@@ -1101,7 +1100,13 @@ details[open] p{animation:faqIn .35s ease}
     surveyCopy.addEventListener("click",function(){
       var text=answerText();
       surveyPlain.value=text;
-      function shown(){ surveyCopied.hidden=false; setTimeout(function(){surveyCopied.hidden=true;},2400); }
+      function shown(){
+        surveyCopied.hidden=false;
+        setStatus(document.getElementById("survey-status"),"",
+          "Odpowiedzi skopiowane. Teraz możesz otworzyć szkic e-mail.",
+          "Answers copied. You can now open the email draft.");
+        setTimeout(function(){surveyCopied.hidden=true;},2400);
+      }
       function reveal(){ surveyFallback.open=true; surveyPlain.focus(); surveyPlain.select(); }
       if(navigator.clipboard&&navigator.clipboard.writeText){
         navigator.clipboard.writeText(text).then(shown,reveal);
